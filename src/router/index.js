@@ -1,27 +1,30 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import HomeView from '../views/HomeView.vue';
-import LoginView from '../views/LoginView.vue';
-import SignupView from '../views/SignupView.vue';
-import { useAuthStore } from '../stores/auth';
+import { useAuthStore } from '@/stores/authStore';
+import LoginPage from '@/pages/LoginPage.vue';
+import RegisterPage from '@/pages/RegisterPage.vue';
+import CalendarPage from '@/pages/CalendarPage.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/login',
-      name: 'login',
-      component: LoginView,
-    },
-    {
-      path: '/signup',
-      name: 'signup',
-      component: SignupView,
-    },
-    {
       path: '/',
-      name: 'home',
-      component: HomeView,
-      meta: { requiresAuth: true },
+      redirect: '/auth/login',
+    },
+    {
+      path: '/auth/login',
+      name: 'login',
+      component: LoginPage,
+    },
+    {
+      path: '/auth/signup',
+      name: 'signup',
+      component: RegisterPage,
+    },
+    {
+      path: '/ledgers',
+      name: 'ledgers',
+      component: CalendarPage,
     },
   ],
 });
@@ -29,7 +32,7 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   const authStore = useAuthStore();
   if (to.meta.requiresAuth && !authStore.currentUser) {
-    next('/login');
+    next('/auth/login');
   } else {
     next();
   }
