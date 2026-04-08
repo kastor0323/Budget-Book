@@ -3,6 +3,7 @@ import { useAuthStore } from '@/stores/authStore';
 import LoginPage from '@/pages/LoginPage.vue';
 import RegisterPage from '@/pages/RegisterPage.vue';
 import CalendarPage from '@/pages/CalendarPage.vue';
+import LogoutPage from '@/pages/LogoutPage.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -20,6 +21,11 @@ const router = createRouter({
       path: '/auth/signup',
       name: 'signup',
       component: RegisterPage,
+    },
+    {
+      path: '/auth/logout',
+      name: 'logout',
+      component: LogoutPage,
     },
     {
       path: '/ledgers',
