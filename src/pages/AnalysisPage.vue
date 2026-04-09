@@ -8,11 +8,6 @@
 
       <div class="header-row">
         <h1 class="page-title">소비 분석</h1>
-
-        <button class="excel-button" @click="handleDownload">
-          <Download class="icon-sm" />
-          <span>엑셀 출력</span>
-        </button>
       </div>
     </header>
 
@@ -305,11 +300,7 @@ const handleBarClick = (item) => {
 };
 
 const goCalendar = () => {
-  router.push('/calendar');
-};
-
-const handleDownload = () => {
-  alert('엑셀 출력 기능은 아직 연결 전입니다.');
+  router.push('/ledgers');
 };
 
 onMounted(async () => {

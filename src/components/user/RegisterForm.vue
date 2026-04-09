@@ -26,7 +26,7 @@
           v-model="email"
           type="email"
           class="form-control form-control-lg"
-          placeholder="example@email.com"
+          placeholder="이메일을 입력해주세요"
         />
         <div :class="emailClass" class="small mt-1 fw-bold">
           {{ emailMessage }}
@@ -172,9 +172,8 @@ const messageClass = computed(() => {
 </script>
 
 <style scoped>
-/* 배경 (KB 느낌) */
 .signup-bg {
-  background: linear-gradient(180deg, #ffd338 0%, #ffb800 100%);
+  background: linear-gradient(135deg, #fff4d6 0%, #ffd47e 50%, #ffbb00 100%);
 }
 
 /* 카드 */
