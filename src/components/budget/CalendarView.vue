@@ -1,8 +1,30 @@
 <script setup>
-import axios from 'axios'
-import { computed, onMounted, ref } from 'vue'
+import { computed } from 'vue'
 
-const API_BASE_URL = 'http://localhost:3000'
+const props = defineProps({
+  ledgerEntries: {
+    type: Array,
+    default: () => [],
+  },
+  visibleMonth: {
+    type: Date,
+    required: true,
+  },
+  selectedDate: {
+    type: String,
+    default: '',
+  },
+  isLoading: {
+    type: Boolean,
+    default: false,
+  },
+  loadError: {
+    type: String,
+    default: '',
+  },
+})
+
+const emit = defineEmits(['month-change', 'date-select'])
 
 const weekdayLabels = [
   { label: '\uC77C', tone: 'sun' },
@@ -15,11 +37,7 @@ const weekdayLabels = [
 ]
 
 const today = new Date()
-const visibleMonth = ref(new Date(today.getFullYear(), today.getMonth(), 1))
-const incomeEntries = ref([])
-const expenditureEntries = ref([])
-const isLoading = ref(false)
-const loadError = ref('')
+const todayKey = createDateKey(today.getFullYear(), today.getMonth() + 1, today.getDate())
 
 function parseLedgerDate(dateString) {
   const [year, month, day] = dateString.split('-').map(Number)
@@ -27,9 +45,7 @@ function parseLedgerDate(dateString) {
 }
 
 function createDateKey(year, month, day) {
-  const normalizedMonth = String(month).padStart(2, '0')
-  const normalizedDay = String(day).padStart(2, '0')
-  return `${year}-${normalizedMonth}-${normalizedDay}`
+  return `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`
 }
 
 function formatSignedAmount(amount, sign) {
@@ -42,58 +58,9 @@ function formatSummaryAmount(amount) {
   return `${sign}${Math.abs(amount).toLocaleString('ko-KR')}\uC6D0`
 }
 
-function normalizeLedgerEntries(items, type) {
-  return items.map((item) => ({
-    id: item.id,
-    date: item.date,
-    amount: Number(item.money) || 0,
-    type,
-  }))
-}
-
-async function loadLedgerEntries() {
-  isLoading.value = true
-  loadError.value = ''
-
-  try {
-    const [incomeResponse, expenditureResponse] = await Promise.all([
-      axios.get(`${API_BASE_URL}/income`),
-      axios.get(`${API_BASE_URL}/expenditure`),
-    ])
-
-    incomeEntries.value = normalizeLedgerEntries(incomeResponse.data, 'income')
-    expenditureEntries.value = normalizeLedgerEntries(expenditureResponse.data, 'expense')
-
-    const latestLedgerEntry = [...incomeEntries.value, ...expenditureEntries.value]
-      .sort((left, right) => right.date.localeCompare(left.date))[0]
-
-    if (latestLedgerEntry) {
-      const { year, month } = parseLedgerDate(latestLedgerEntry.date)
-      visibleMonth.value = new Date(year, month - 1, 1)
-    }
-  } catch (error) {
-    loadError.value = '\uAC00\uACC4\uBD80 \uB370\uC774\uD130\uB97C \uBD88\uB7EC\uC624\uC9C0 \uBABB\uD588\uC2B5\uB2C8\uB2E4.'
-    incomeEntries.value = []
-    expenditureEntries.value = []
-  } finally {
-    isLoading.value = false
-  }
-}
-
-const ledgerEntries = computed(() => [
-  ...incomeEntries.value,
-  ...expenditureEntries.value,
-])
-
-const currentYear = computed(() => visibleMonth.value.getFullYear())
-const currentMonthIndex = computed(() => visibleMonth.value.getMonth())
+const currentYear = computed(() => props.visibleMonth.getFullYear())
+const currentMonthIndex = computed(() => props.visibleMonth.getMonth())
 const currentMonthNumber = computed(() => currentMonthIndex.value + 1)
-
-const todayKey = createDateKey(
-  today.getFullYear(),
-  today.getMonth() + 1,
-  today.getDate(),
-)
 
 const currentMonthLabel = computed(
   () => `${currentYear.value}\uB144 ${currentMonthNumber.value}\uC6D4`,
@@ -102,7 +69,7 @@ const currentMonthLabel = computed(
 const monthlyCalendarResponse = computed(() => {
   const dailySummaryMap = new Map()
 
-  ledgerEntries.value.forEach((entry) => {
+  props.ledgerEntries.forEach((entry) => {
     const { year, month, day } = parseLedgerDate(entry.date)
 
     if (year !== currentYear.value || month !== currentMonthNumber.value) {
@@ -138,17 +105,8 @@ const monthlySummaryMap = computed(() =>
 )
 
 const calendarCells = computed(() => {
-  const firstWeekday = new Date(
-    currentYear.value,
-    currentMonthIndex.value,
-    1,
-  ).getDay()
-
-  const lastDateOfMonth = new Date(
-    currentYear.value,
-    currentMonthIndex.value + 1,
-    0,
-  ).getDate()
+  const firstWeekday = new Date(currentYear.value, currentMonthIndex.value, 1).getDay()
+  const lastDateOfMonth = new Date(currentYear.value, currentMonthIndex.value + 1, 0).getDate()
 
   const leadingEmptyCells = Array.from({ length: firstWeekday }, (_, index) => ({
     key: `empty-${index}`,
@@ -175,45 +133,15 @@ const calendarCells = computed(() => {
 })
 
 const summaryCards = computed(() => {
-  const monthlyIncome = monthlyCalendarResponse.value.reduce(
-    (sum, item) => sum + item.totalIncome,
-    0,
-  )
-  const monthlyExpense = monthlyCalendarResponse.value.reduce(
-    (sum, item) => sum + item.totalExpense,
-    0,
-  )
+  const monthlyIncome = monthlyCalendarResponse.value.reduce((sum, item) => sum + item.totalIncome, 0)
+  const monthlyExpense = monthlyCalendarResponse.value.reduce((sum, item) => sum + item.totalExpense, 0)
   const balance = monthlyIncome - monthlyExpense
 
   return [
-    {
-      label: '\uC218\uC785',
-      amount: formatSummaryAmount(monthlyIncome),
-      tone: 'income',
-    },
-    {
-      label: '\uC9C0\uCD9C',
-      amount: formatSummaryAmount(-monthlyExpense),
-      tone: 'expense',
-    },
-    {
-      label: '\uC794\uC561',
-      amount: formatSummaryAmount(balance),
-      tone: 'balance',
-    },
+    { label: '\uC218\uC785', amount: formatSummaryAmount(monthlyIncome), tone: 'income' },
+    { label: '\uC9C0\uCD9C', amount: formatSummaryAmount(-monthlyExpense), tone: 'expense' },
+    { label: '\uC794\uC561', amount: formatSummaryAmount(balance), tone: 'balance' },
   ]
-})
-
-function moveMonth(offset) {
-  visibleMonth.value = new Date(
-    currentYear.value,
-    currentMonthIndex.value + offset,
-    1,
-  )
-}
-
-onMounted(() => {
-  loadLedgerEntries()
 })
 </script>
 
@@ -225,7 +153,7 @@ onMounted(() => {
           type="button"
           class="month-arrow btn btn-link p-0 text-decoration-none"
           aria-label="Previous month"
-          @click="moveMonth(-1)"
+          @click="emit('month-change', -1)"
         >
           &lsaquo;
         </button>
@@ -234,7 +162,7 @@ onMounted(() => {
           type="button"
           class="month-arrow btn btn-link p-0 text-decoration-none"
           aria-label="Next month"
-          @click="moveMonth(1)"
+          @click="emit('month-change', 1)"
         >
           &rsaquo;
         </button>
@@ -261,15 +189,18 @@ onMounted(() => {
         </div>
 
         <div class="calendar-grid">
-          <div
+          <button
             v-for="cell in calendarCells"
             :key="cell.key"
-            class="date-cell"
-            :class="{
-              'date-cell-empty': cell.isEmpty,
-              'date-cell-today': cell.isToday,
-              'date-cell-clickable': !cell.isEmpty,
-            }"
+            type="button"
+          class="date-cell"
+          :class="{
+            'date-cell-empty': cell.isEmpty,
+            'date-cell-today': cell.isToday,
+            'date-cell-clickable': !cell.isEmpty,
+          }"
+            :disabled="cell.isEmpty"
+            @click="!cell.isEmpty && emit('date-select', cell.dateKey)"
           >
             <template v-if="!cell.isEmpty">
               <span class="day-number">{{ cell.day }}</span>
@@ -280,7 +211,7 @@ onMounted(() => {
                 {{ cell.income }}
               </span>
             </template>
-          </div>
+          </button>
         </div>
       </template>
     </article>
@@ -408,6 +339,7 @@ onMounted(() => {
   border-color: transparent;
   background: transparent;
   box-shadow: none;
+  pointer-events: none;
 }
 
 .date-cell-clickable {
