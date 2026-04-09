@@ -10,6 +10,7 @@
   "income": [
     {
       "id": 1,
+      "user": "test@gmail.com",
       "date": "2026-04-08",
       "money": 30000,
       "category": "월급",
@@ -20,6 +21,7 @@
   "expenditure": [
     {
       "id": 2,
+      "user": "test@gmail.com",
       "date": "2026-04-08",
       "money": 10000,
       "category": "식비",
