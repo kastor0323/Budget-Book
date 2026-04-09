@@ -1,17 +1,59 @@
 <script setup>
+import { onMounted } from 'vue'
+import { storeToRefs } from 'pinia'
+
 import CalendarView from '../components/budget/CalendarView.vue'
 import TransactionDetail from '../components/budget/TransactionDetail.vue'
 import TransactionList from '../components/budget/TransactionList.vue'
+import { useBudgetStore } from '../stores/budgetStore'
+
+const budgetStore = useBudgetStore()
+const {
+  selectedDate,
+  visibleMonth,
+  isLoading,
+  loadError,
+  filters,
+  ledgerEntries,
+  categoryOptions,
+  categoryGroups,
+  selectedSummaryTransactions,
+  summarySourceTransactions,
+} = storeToRefs(budgetStore)
+
+onMounted(() => {
+  budgetStore.loadLedgerEntries()
+})
 </script>
 
 <template>
   <section class="calendar-page">
     <div class="page-body">
-      <CalendarView />
+      <CalendarView
+        :ledger-entries="ledgerEntries"
+        :visible-month="visibleMonth"
+        :selected-date="selectedDate"
+        :is-loading="isLoading"
+        :load-error="loadError"
+        @month-change="budgetStore.changeMonth"
+        @date-select="budgetStore.toggleSelectedDate"
+      />
 
-      <section class="transaction-section">
-        <TransactionDetail />
-        <TransactionList />
+      <section v-if="selectedDate" class="transaction-section">
+        <TransactionDetail
+          :selected-date="selectedDate"
+          :transactions="summarySourceTransactions"
+          :filters="filters"
+          :category-options="categoryOptions"
+          :category-groups="categoryGroups"
+          :load-error="loadError"
+          @filter-change="budgetStore.updateFilters"
+        />
+        <TransactionList
+          :selected-date="selectedDate"
+          :transactions="selectedSummaryTransactions"
+          :load-error="loadError"
+        />
       </section>
     </div>
   </section>
