@@ -38,6 +38,10 @@
   background: #6a6055;
 }
 
+.topbar-btn.mypage {
+  background: #6a6055;
+}
+
 .topbar-btn:hover {
   opacity: 0.92;
 }
