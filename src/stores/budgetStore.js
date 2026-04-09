@@ -50,9 +50,15 @@ export const useBudgetStore = defineStore('budget', () => {
     ...expenditureEntries.value,
   ]);
 
-  const selectedTransactions = computed(() =>
-    ledgerEntries.value.filter((entry) => entry.date === selectedDate.value),
-  );
+  const selectedTransactions = computed(() => {
+    if (selectedDate.value) {
+      return ledgerEntries.value.filter((entry) => entry.date === selectedDate.value);
+    }
+    const year = visibleMonth.value.getFullYear();
+    const month = String(visibleMonth.value.getMonth() + 1).padStart(2, '0');
+    const prefix = `${year}-${month}`;
+    return ledgerEntries.value.filter((entry) => entry.date.startsWith(prefix));
+  });
 
   const categoryOptions = computed(() => {
     if (filters.value.type === 'income') {

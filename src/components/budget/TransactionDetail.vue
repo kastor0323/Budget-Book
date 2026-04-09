@@ -6,6 +6,10 @@ const props = defineProps({
     type: String,
     default: '',
   },
+  visibleMonth: {
+    type: Date,
+    default: null,
+  },
   transactions: {
     type: Array,
     default: () => [],
@@ -45,10 +49,22 @@ const uiText = {
   amountAsc: '\uAE08\uC561 \uC624\uB984\uCC28\uC21C',
 };
 
-function formatDateLabel(dateString) {
-  const [year, month, day] = dateString.split('-').map(Number);
-  return `${year}\uB144 ${month}\uC6D4 ${day}\uC77C`;
+function formatDateLabel(dateString, visibleMonth) {
+  if (dateString) {
+    const [year, month, day] = dateString.split('-').map(Number);
+    return `${year}\uB144 ${month}\uC6D4 ${day}\uC77C`;
+  }
+  if (visibleMonth) {
+    const year = visibleMonth.getFullYear();
+    const month = visibleMonth.getMonth() + 1;
+    return `${year}\uB144 ${month}\uC6D4`;
+  }
+  return '';
 }
+
+const summaryTitle = computed(() => {
+  return props.selectedDate ? '\uC77C\uC77C \uC694\uC57D' : '\uC6D4\uAC04 \uC694\uC57D';
+});
 
 function formatSummaryAmount(amount) {
   const sign = amount > 0 ? '+' : amount < 0 ? '-' : '';
@@ -95,11 +111,11 @@ function updateFilter(key, event) {
 <template>
   <section class="transaction-detail">
     <header class="detail-header">
-      <h2>{{ formatDateLabel(selectedDate) }}</h2>
+      <h2>{{ formatDateLabel(props.selectedDate, props.visibleMonth) }}</h2>
     </header>
 
     <div class="detail-card">
-      <h3>{{ uiText.dailySummaryTitle }}</h3>
+      <h3>{{ summaryTitle }}</h3>
 
       <div class="summary-grid">
         <article

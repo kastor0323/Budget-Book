@@ -37,12 +37,20 @@ function closeEditModal() {
 }
 
 async function handleSaveTransaction(updatedData) {
-  await budgetStore.updateTransaction(updatedData.id, updatedData.type, updatedData);
+  await budgetStore.updateTransaction(
+    updatedData.id,
+    updatedData.type,
+    updatedData,
+  );
   closeEditModal();
 }
 
 async function handleDeleteTransaction(transaction) {
-  if (confirm('\uC815\uB9D0\uB85C \uC774 \uAC70\uB798 \uB0B4\uC5ED\uC744 \uC0AD\uC81C\uD558\uC2DC\uACA0\uC2B5\uB2C8\uAE4C?')) {
+  if (
+    confirm(
+      '\uC815\uB9D0\uB85C \uC774 \uAC70\uB798 \uB0B4\uC5ED\uC744 \uC0AD\uC81C\uD558\uC2DC\uACA0\uC2B5\uB2C8\uAE4C?',
+    )
+  ) {
     await budgetStore.deleteTransaction(transaction.id, transaction.type);
   }
 }
@@ -66,9 +74,10 @@ onMounted(() => {
         @date-select="budgetStore.toggleSelectedDate"
       />
 
-      <section v-if="selectedDate" class="transaction-section">
+      <section class="transaction-section">
         <TransactionDetail
           :selected-date="selectedDate"
+          :visible-month="visibleMonth"
           :transactions="summarySourceTransactions"
           :filters="filters"
           :category-options="categoryOptions"

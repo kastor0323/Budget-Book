@@ -257,27 +257,7 @@ const summaryCards = computed(() => {
       </template>
     </article>
 
-    <article class="summary-panel">
-      <div class="summary-title-row">
-        <h2>{{ `${currentMonthNumber}\uC6D4 \uC694\uC57D` }}</h2>
-      </div>
 
-      <div v-if="loadError" class="calendar-status calendar-status-error">
-        {{ loadError }}
-      </div>
-
-      <div v-else class="summary-grid row g-2 g-md-3">
-        <section
-          v-for="card in summaryCards"
-          :key="card.label"
-          class="summary-card col-4"
-          :class="`summary-${card.tone}`"
-        >
-          <p>{{ card.label }}</p>
-          <strong>{{ card.amount }}</strong>
-        </section>
-      </div>
-    </article>
   </section>
 </template>
 

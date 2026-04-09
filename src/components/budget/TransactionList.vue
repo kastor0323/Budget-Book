@@ -18,9 +18,14 @@ const props = defineProps({
 
 const uiText = {
   transactionList: '\uAC70\uB798 \uB0B4\uC5ED',
-  noTransactionsSuffix:
-    '\uC5D0 \uD45C\uC2DC\uD560 \uAC70\uB798 \uB0B4\uC5ED\uC774 \uC5C6\uC2B5\uB2C8\uB2E4.',
 };
+
+const emptyMessage = computed(() => {
+  if (props.selectedDate) {
+    return `${props.selectedDate}\uC5D0 \uD45C\uC2DC\uD560 \uAC70\uB798 \uB0B4\uC5ED\uC774 \uC5C6\uC2B5\uB2C8\uB2E4.`;
+  }
+  return '\uC774\uB2EC\uC5D0 \uD45C\uC2DC\uD560 \uAC70\uB798 \uB0B4\uC5ED\uC774 \uC5C6\uC2B5\uB2C8\uB2E4.';
+});
 
 function buildTransactionTitle(item) {
   if (item.history) return item.history;
@@ -32,7 +37,8 @@ function buildTransactionTitle(item) {
 
 function buildTransactionSubtitle(item) {
   const typeLabel = item.type === 'income' ? '\uC218\uC785' : '\uC9C0\uCD9C';
-  return item.category ? `${typeLabel} \u00B7 ${item.category}` : typeLabel;
+  const typeInfo = item.category ? `${typeLabel} \u00B7 ${item.category}` : typeLabel;
+  return `${item.date} \u00B7 ${typeInfo}`;
 }
 
 const emit = defineEmits(['edit', 'delete']);
@@ -63,7 +69,7 @@ const mappedTransactions = computed(() =>
     <p v-if="loadError" class="list-message list-error">{{ loadError }}</p>
 
     <div v-else-if="mappedTransactions.length === 0" class="list-empty">
-      {{ `${selectedDate}${uiText.noTransactionsSuffix}` }}
+      {{ emptyMessage }}
     </div>
 
     <div v-else class="list-stack">
