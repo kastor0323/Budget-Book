@@ -41,6 +41,1831 @@
       "category": "여가비",
       "history": "게임기",
       "memo": "다른 유저 데이터"
+    },
+
+    {
+      "id": 3,
+      "user": "test@gmail.com",
+      "date": "2025-11-01",
+      "money": 12000,
+      "category": "식비",
+      "history": "김밥",
+      "memo": "점심"
+    },
+    {
+      "id": 4,
+      "user": "aaa@gmail.com",
+      "date": "2025-11-02",
+      "money": 8000,
+      "category": "교통비",
+      "history": "버스",
+      "memo": "왕복"
+    },
+    {
+      "id": 5,
+      "user": "test@gmail.com",
+      "date": "2025-11-03",
+      "money": 25000,
+      "category": "여가비",
+      "history": "카페",
+      "memo": "스터디"
+    },
+    {
+      "id": 6,
+      "user": "aaa@gmail.com",
+      "date": "2025-11-04",
+      "money": 50000,
+      "category": "주거/생활비",
+      "history": "관리비",
+      "memo": "월요금"
+    },
+    {
+      "id": 7,
+      "user": "test@gmail.com",
+      "date": "2025-11-05",
+      "money": 18000,
+      "category": "식비",
+      "history": "치킨",
+      "memo": "야식"
+    },
+    {
+      "id": 8,
+      "user": "aaa@gmail.com",
+      "date": "2025-11-06",
+      "money": 15000,
+      "category": "교통비",
+      "history": "택시",
+      "memo": "지각"
+    },
+    {
+      "id": 9,
+      "user": "test@gmail.com",
+      "date": "2025-11-07",
+      "money": 30000,
+      "category": "여가비",
+      "history": "영화",
+      "memo": "혼영"
+    },
+    {
+      "id": 10,
+      "user": "aaa@gmail.com",
+      "date": "2025-11-08",
+      "money": 60000,
+      "category": "주거/생활비",
+      "history": "전기세",
+      "memo": "월요금"
+    },
+
+    {
+      "id": 11,
+      "user": "test@gmail.com",
+      "date": "2025-11-09",
+      "money": 10000,
+      "category": "식비",
+      "history": "라면",
+      "memo": "야식"
+    },
+    {
+      "id": 12,
+      "user": "aaa@gmail.com",
+      "date": "2025-11-10",
+      "money": 7000,
+      "category": "교통비",
+      "history": "버스",
+      "memo": "왕복"
+    },
+    {
+      "id": 13,
+      "user": "test@gmail.com",
+      "date": "2025-11-11",
+      "money": 28000,
+      "category": "여가비",
+      "history": "카페",
+      "memo": "친구"
+    },
+    {
+      "id": 14,
+      "user": "aaa@gmail.com",
+      "date": "2025-11-12",
+      "money": 52000,
+      "category": "주거/생활비",
+      "history": "가스비",
+      "memo": "월요금"
+    },
+    {
+      "id": 15,
+      "user": "test@gmail.com",
+      "date": "2025-11-13",
+      "money": 13000,
+      "category": "식비",
+      "history": "국밥",
+      "memo": "점심"
+    },
+    {
+      "id": 16,
+      "user": "aaa@gmail.com",
+      "date": "2025-11-14",
+      "money": 16000,
+      "category": "교통비",
+      "history": "택시",
+      "memo": "늦음"
+    },
+    {
+      "id": 17,
+      "user": "test@gmail.com",
+      "date": "2025-11-15",
+      "money": 45000,
+      "category": "여가비",
+      "history": "술",
+      "memo": "친구"
+    },
+    {
+      "id": 18,
+      "user": "aaa@gmail.com",
+      "date": "2025-11-16",
+      "money": 55000,
+      "category": "주거/생활비",
+      "history": "인터넷",
+      "memo": "요금"
+    },
+
+    {
+      "id": 19,
+      "user": "test@gmail.com",
+      "date": "2025-11-17",
+      "money": 9000,
+      "category": "식비",
+      "history": "김밥",
+      "memo": "간단"
+    },
+    {
+      "id": 20,
+      "user": "aaa@gmail.com",
+      "date": "2025-11-18",
+      "money": 6000,
+      "category": "교통비",
+      "history": "버스",
+      "memo": "왕복"
+    },
+    {
+      "id": 21,
+      "user": "test@gmail.com",
+      "date": "2025-11-19",
+      "money": 30000,
+      "category": "여가비",
+      "history": "영화",
+      "memo": "주말"
+    },
+    {
+      "id": 22,
+      "user": "aaa@gmail.com",
+      "date": "2025-11-20",
+      "money": 65000,
+      "category": "주거/생활비",
+      "history": "관리비",
+      "memo": "월요금"
+    },
+    {
+      "id": 23,
+      "user": "test@gmail.com",
+      "date": "2025-11-21",
+      "money": 11000,
+      "category": "식비",
+      "history": "햄버거",
+      "memo": "점심"
+    },
+    {
+      "id": 24,
+      "user": "aaa@gmail.com",
+      "date": "2025-11-22",
+      "money": 14000,
+      "category": "교통비",
+      "history": "택시",
+      "memo": "지각"
+    },
+    {
+      "id": 25,
+      "user": "test@gmail.com",
+      "date": "2025-11-23",
+      "money": 26000,
+      "category": "여가비",
+      "history": "카페",
+      "memo": "스터디"
+    },
+    {
+      "id": 26,
+      "user": "aaa@gmail.com",
+      "date": "2025-11-24",
+      "money": 48000,
+      "category": "주거/생활비",
+      "history": "가스비",
+      "memo": "월요금"
+    },
+
+    {
+      "id": 27,
+      "user": "test@gmail.com",
+      "date": "2025-11-25",
+      "money": 17000,
+      "category": "식비",
+      "history": "치킨",
+      "memo": "야식"
+    },
+    {
+      "id": 28,
+      "user": "aaa@gmail.com",
+      "date": "2025-11-26",
+      "money": 5000,
+      "category": "교통비",
+      "history": "버스",
+      "memo": "왕복"
+    },
+    {
+      "id": 29,
+      "user": "test@gmail.com",
+      "date": "2025-11-27",
+      "money": 32000,
+      "category": "여가비",
+      "history": "영화",
+      "memo": "데이트"
+    },
+    {
+      "id": 30,
+      "user": "aaa@gmail.com",
+      "date": "2025-11-28",
+      "money": 70000,
+      "category": "주거/생활비",
+      "history": "관리비",
+      "memo": "월요금"
+    },
+    {
+      "id": 31,
+      "user": "test@gmail.com",
+      "date": "2025-11-29",
+      "money": 8000,
+      "category": "식비",
+      "history": "라면",
+      "memo": "야식"
+    },
+    {
+      "id": 32,
+      "user": "aaa@gmail.com",
+      "date": "2025-11-30",
+      "money": 15000,
+      "category": "교통비",
+      "history": "택시",
+      "memo": "늦음"
+    },
+
+    {
+      "id": 33,
+      "user": "test@gmail.com",
+      "date": "2025-12-01",
+      "money": 12000,
+      "category": "식비",
+      "history": "김밥",
+      "memo": "점심"
+    },
+    {
+      "id": 34,
+      "user": "aaa@gmail.com",
+      "date": "2025-12-02",
+      "money": 8000,
+      "category": "교통비",
+      "history": "버스",
+      "memo": "왕복"
+    },
+    {
+      "id": 35,
+      "user": "test@gmail.com",
+      "date": "2025-12-03",
+      "money": 25000,
+      "category": "여가비",
+      "history": "카페",
+      "memo": "스터디"
+    },
+    {
+      "id": 36,
+      "user": "aaa@gmail.com",
+      "date": "2025-12-04",
+      "money": 50000,
+      "category": "주거/생활비",
+      "history": "관리비",
+      "memo": "월요금"
+    },
+    {
+      "id": 37,
+      "user": "test@gmail.com",
+      "date": "2025-12-05",
+      "money": 18000,
+      "category": "식비",
+      "history": "치킨",
+      "memo": "야식"
+    },
+    {
+      "id": 38,
+      "user": "aaa@gmail.com",
+      "date": "2025-12-06",
+      "money": 15000,
+      "category": "교통비",
+      "history": "택시",
+      "memo": "지각"
+    },
+    {
+      "id": 39,
+      "user": "test@gmail.com",
+      "date": "2025-12-07",
+      "money": 30000,
+      "category": "여가비",
+      "history": "영화",
+      "memo": "혼영"
+    },
+    {
+      "id": 40,
+      "user": "aaa@gmail.com",
+      "date": "2025-12-08",
+      "money": 60000,
+      "category": "주거/생활비",
+      "history": "전기세",
+      "memo": "월요금"
+    },
+
+    {
+      "id": 41,
+      "user": "test@gmail.com",
+      "date": "2025-12-09",
+      "money": 10000,
+      "category": "식비",
+      "history": "라면",
+      "memo": "야식"
+    },
+    {
+      "id": 42,
+      "user": "aaa@gmail.com",
+      "date": "2025-12-10",
+      "money": 7000,
+      "category": "교통비",
+      "history": "버스",
+      "memo": "왕복"
+    },
+    {
+      "id": 43,
+      "user": "test@gmail.com",
+      "date": "2025-12-11",
+      "money": 28000,
+      "category": "여가비",
+      "history": "카페",
+      "memo": "친구"
+    },
+    {
+      "id": 44,
+      "user": "aaa@gmail.com",
+      "date": "2025-12-12",
+      "money": 52000,
+      "category": "주거/생활비",
+      "history": "가스비",
+      "memo": "월요금"
+    },
+    {
+      "id": 45,
+      "user": "test@gmail.com",
+      "date": "2025-12-13",
+      "money": 13000,
+      "category": "식비",
+      "history": "국밥",
+      "memo": "점심"
+    },
+    {
+      "id": 46,
+      "user": "aaa@gmail.com",
+      "date": "2025-12-14",
+      "money": 16000,
+      "category": "교통비",
+      "history": "택시",
+      "memo": "늦음"
+    },
+    {
+      "id": 47,
+      "user": "test@gmail.com",
+      "date": "2025-12-15",
+      "money": 45000,
+      "category": "여가비",
+      "history": "술",
+      "memo": "친구"
+    },
+    {
+      "id": 48,
+      "user": "aaa@gmail.com",
+      "date": "2025-12-16",
+      "money": 55000,
+      "category": "주거/생활비",
+      "history": "인터넷",
+      "memo": "요금"
+    },
+
+    {
+      "id": 49,
+      "user": "test@gmail.com",
+      "date": "2025-12-17",
+      "money": 9000,
+      "category": "식비",
+      "history": "김밥",
+      "memo": "간단"
+    },
+    {
+      "id": 50,
+      "user": "aaa@gmail.com",
+      "date": "2025-12-18",
+      "money": 6000,
+      "category": "교통비",
+      "history": "버스",
+      "memo": "왕복"
+    },
+    {
+      "id": 51,
+      "user": "test@gmail.com",
+      "date": "2025-12-19",
+      "money": 30000,
+      "category": "여가비",
+      "history": "영화",
+      "memo": "주말"
+    },
+    {
+      "id": 52,
+      "user": "aaa@gmail.com",
+      "date": "2025-12-20",
+      "money": 65000,
+      "category": "주거/생활비",
+      "history": "관리비",
+      "memo": "월요금"
+    },
+    {
+      "id": 53,
+      "user": "test@gmail.com",
+      "date": "2025-12-21",
+      "money": 11000,
+      "category": "식비",
+      "history": "햄버거",
+      "memo": "점심"
+    },
+    {
+      "id": 54,
+      "user": "aaa@gmail.com",
+      "date": "2025-12-22",
+      "money": 14000,
+      "category": "교통비",
+      "history": "택시",
+      "memo": "지각"
+    },
+    {
+      "id": 55,
+      "user": "test@gmail.com",
+      "date": "2025-12-23",
+      "money": 26000,
+      "category": "여가비",
+      "history": "카페",
+      "memo": "스터디"
+    },
+    {
+      "id": 56,
+      "user": "aaa@gmail.com",
+      "date": "2025-12-24",
+      "money": 48000,
+      "category": "주거/생활비",
+      "history": "가스비",
+      "memo": "월요금"
+    },
+
+    {
+      "id": 57,
+      "user": "test@gmail.com",
+      "date": "2025-12-25",
+      "money": 17000,
+      "category": "식비",
+      "history": "치킨",
+      "memo": "야식"
+    },
+    {
+      "id": 58,
+      "user": "aaa@gmail.com",
+      "date": "2025-12-26",
+      "money": 5000,
+      "category": "교통비",
+      "history": "버스",
+      "memo": "왕복"
+    },
+    {
+      "id": 59,
+      "user": "test@gmail.com",
+      "date": "2025-12-27",
+      "money": 32000,
+      "category": "여가비",
+      "history": "영화",
+      "memo": "데이트"
+    },
+    {
+      "id": 60,
+      "user": "aaa@gmail.com",
+      "date": "2025-12-28",
+      "money": 70000,
+      "category": "주거/생활비",
+      "history": "관리비",
+      "memo": "월요금"
+    },
+    {
+      "id": 61,
+      "user": "test@gmail.com",
+      "date": "2025-12-29",
+      "money": 8000,
+      "category": "식비",
+      "history": "라면",
+      "memo": "야식"
+    },
+    {
+      "id": 62,
+      "user": "aaa@gmail.com",
+      "date": "2025-12-30",
+      "money": 15000,
+      "category": "교통비",
+      "history": "택시",
+      "memo": "늦음"
+    },
+
+    {
+      "id": 63,
+      "user": "test@gmail.com",
+      "date": "2025-12-31",
+      "money": 12000,
+      "category": "식비",
+      "history": "김밥",
+      "memo": "점심"
+    },
+    {
+      "id": 64,
+      "user": "aaa@gmail.com",
+      "date": "2026-01-01",
+      "money": 8000,
+      "category": "교통비",
+      "history": "버스",
+      "memo": "왕복"
+    },
+    {
+      "id": 65,
+      "user": "test@gmail.com",
+      "date": "2026-01-02",
+      "money": 25000,
+      "category": "여가비",
+      "history": "카페",
+      "memo": "스터디"
+    },
+    {
+      "id": 66,
+      "user": "aaa@gmail.com",
+      "date": "2026-01-03",
+      "money": 50000,
+      "category": "주거/생활비",
+      "history": "관리비",
+      "memo": "월요금"
+    },
+    {
+      "id": 67,
+      "user": "test@gmail.com",
+      "date": "2026-01-04",
+      "money": 18000,
+      "category": "식비",
+      "history": "치킨",
+      "memo": "야식"
+    },
+    {
+      "id": 68,
+      "user": "aaa@gmail.com",
+      "date": "2026-01-05",
+      "money": 15000,
+      "category": "교통비",
+      "history": "택시",
+      "memo": "지각"
+    },
+    {
+      "id": 69,
+      "user": "test@gmail.com",
+      "date": "2026-01-06",
+      "money": 30000,
+      "category": "여가비",
+      "history": "영화",
+      "memo": "혼영"
+    },
+    {
+      "id": 70,
+      "user": "aaa@gmail.com",
+      "date": "2026-01-07",
+      "money": 60000,
+      "category": "주거/생활비",
+      "history": "전기세",
+      "memo": "월요금"
+    },
+    {
+      "id": 71,
+      "user": "test@gmail.com",
+      "date": "2026-01-08",
+      "money": 10000,
+      "category": "식비",
+      "history": "라면",
+      "memo": "야식"
+    },
+    {
+      "id": 72,
+      "user": "aaa@gmail.com",
+      "date": "2026-01-09",
+      "money": 7000,
+      "category": "교통비",
+      "history": "버스",
+      "memo": "왕복"
+    },
+    {
+      "id": 73,
+      "user": "test@gmail.com",
+      "date": "2026-01-10",
+      "money": 28000,
+      "category": "여가비",
+      "history": "카페",
+      "memo": "친구"
+    },
+    {
+      "id": 74,
+      "user": "aaa@gmail.com",
+      "date": "2026-01-11",
+      "money": 52000,
+      "category": "주거/생활비",
+      "history": "가스비",
+      "memo": "월요금"
+    },
+    {
+      "id": 75,
+      "user": "test@gmail.com",
+      "date": "2026-01-12",
+      "money": 13000,
+      "category": "식비",
+      "history": "국밥",
+      "memo": "점심"
+    },
+    {
+      "id": 76,
+      "user": "aaa@gmail.com",
+      "date": "2026-01-13",
+      "money": 16000,
+      "category": "교통비",
+      "history": "택시",
+      "memo": "늦음"
+    },
+    {
+      "id": 77,
+      "user": "test@gmail.com",
+      "date": "2026-01-14",
+      "money": 45000,
+      "category": "여가비",
+      "history": "술",
+      "memo": "친구"
+    },
+    {
+      "id": 78,
+      "user": "aaa@gmail.com",
+      "date": "2026-01-15",
+      "money": 55000,
+      "category": "주거/생활비",
+      "history": "인터넷",
+      "memo": "요금"
+    },
+
+    {
+      "id": 79,
+      "user": "test@gmail.com",
+      "date": "2026-01-16",
+      "money": 9000,
+      "category": "식비",
+      "history": "김밥",
+      "memo": "간단"
+    },
+    {
+      "id": 80,
+      "user": "aaa@gmail.com",
+      "date": "2026-01-17",
+      "money": 6000,
+      "category": "교통비",
+      "history": "버스",
+      "memo": "왕복"
+    },
+    {
+      "id": 81,
+      "user": "test@gmail.com",
+      "date": "2026-01-18",
+      "money": 30000,
+      "category": "여가비",
+      "history": "영화",
+      "memo": "주말"
+    },
+    {
+      "id": 82,
+      "user": "aaa@gmail.com",
+      "date": "2026-01-19",
+      "money": 65000,
+      "category": "주거/생활비",
+      "history": "관리비",
+      "memo": "월요금"
+    },
+    {
+      "id": 83,
+      "user": "test@gmail.com",
+      "date": "2026-01-20",
+      "money": 11000,
+      "category": "식비",
+      "history": "햄버거",
+      "memo": "점심"
+    },
+    {
+      "id": 84,
+      "user": "aaa@gmail.com",
+      "date": "2026-01-21",
+      "money": 14000,
+      "category": "교통비",
+      "history": "택시",
+      "memo": "지각"
+    },
+    {
+      "id": 85,
+      "user": "test@gmail.com",
+      "date": "2026-01-22",
+      "money": 26000,
+      "category": "여가비",
+      "history": "카페",
+      "memo": "스터디"
+    },
+    {
+      "id": 86,
+      "user": "aaa@gmail.com",
+      "date": "2026-01-23",
+      "money": 48000,
+      "category": "주거/생활비",
+      "history": "가스비",
+      "memo": "월요금"
+    },
+
+    {
+      "id": 87,
+      "user": "test@gmail.com",
+      "date": "2026-01-24",
+      "money": 17000,
+      "category": "식비",
+      "history": "치킨",
+      "memo": "야식"
+    },
+    {
+      "id": 88,
+      "user": "aaa@gmail.com",
+      "date": "2026-01-25",
+      "money": 5000,
+      "category": "교통비",
+      "history": "버스",
+      "memo": "왕복"
+    },
+    {
+      "id": 89,
+      "user": "test@gmail.com",
+      "date": "2026-01-26",
+      "money": 32000,
+      "category": "여가비",
+      "history": "영화",
+      "memo": "데이트"
+    },
+    {
+      "id": 90,
+      "user": "aaa@gmail.com",
+      "date": "2026-01-27",
+      "money": 70000,
+      "category": "주거/생활비",
+      "history": "관리비",
+      "memo": "월요금"
+    },
+    {
+      "id": 91,
+      "user": "test@gmail.com",
+      "date": "2026-01-28",
+      "money": 8000,
+      "category": "식비",
+      "history": "라면",
+      "memo": "야식"
+    },
+    {
+      "id": 92,
+      "user": "aaa@gmail.com",
+      "date": "2026-01-29",
+      "money": 15000,
+      "category": "교통비",
+      "history": "택시",
+      "memo": "늦음"
+    },
+
+    {
+      "id": 93,
+      "user": "test@gmail.com",
+      "date": "2026-01-30",
+      "money": 12000,
+      "category": "식비",
+      "history": "김밥",
+      "memo": "점심"
+    },
+    {
+      "id": 94,
+      "user": "aaa@gmail.com",
+      "date": "2026-01-31",
+      "money": 8000,
+      "category": "교통비",
+      "history": "버스",
+      "memo": "왕복"
+    },
+
+    {
+      "id": 95,
+      "user": "test@gmail.com",
+      "date": "2026-02-01",
+      "money": 25000,
+      "category": "여가비",
+      "history": "카페",
+      "memo": "스터디"
+    },
+    {
+      "id": 96,
+      "user": "aaa@gmail.com",
+      "date": "2026-02-02",
+      "money": 50000,
+      "category": "주거/생활비",
+      "history": "관리비",
+      "memo": "월요금"
+    },
+    {
+      "id": 97,
+      "user": "test@gmail.com",
+      "date": "2026-02-03",
+      "money": 18000,
+      "category": "식비",
+      "history": "치킨",
+      "memo": "야식"
+    },
+    {
+      "id": 98,
+      "user": "aaa@gmail.com",
+      "date": "2026-02-04",
+      "money": 15000,
+      "category": "교통비",
+      "history": "택시",
+      "memo": "지각"
+    },
+    {
+      "id": 99,
+      "user": "test@gmail.com",
+      "date": "2026-02-05",
+      "money": 30000,
+      "category": "여가비",
+      "history": "영화",
+      "memo": "혼영"
+    },
+    {
+      "id": 100,
+      "user": "aaa@gmail.com",
+      "date": "2026-02-06",
+      "money": 60000,
+      "category": "주거/생활비",
+      "history": "전기세",
+      "memo": "월요금"
+    },
+
+    {
+      "id": 101,
+      "user": "test@gmail.com",
+      "date": "2026-02-07",
+      "money": 10000,
+      "category": "식비",
+      "history": "라면",
+      "memo": "야식"
+    },
+    {
+      "id": 102,
+      "user": "aaa@gmail.com",
+      "date": "2026-02-08",
+      "money": 7000,
+      "category": "교통비",
+      "history": "버스",
+      "memo": "왕복"
+    },
+    {
+      "id": 103,
+      "user": "test@gmail.com",
+      "date": "2026-02-09",
+      "money": 28000,
+      "category": "여가비",
+      "history": "카페",
+      "memo": "친구"
+    },
+    {
+      "id": 104,
+      "user": "aaa@gmail.com",
+      "date": "2026-02-10",
+      "money": 52000,
+      "category": "주거/생활비",
+      "history": "가스비",
+      "memo": "월요금"
+    },
+    {
+      "id": 105,
+      "user": "test@gmail.com",
+      "date": "2026-02-11",
+      "money": 13000,
+      "category": "식비",
+      "history": "국밥",
+      "memo": "점심"
+    },
+    {
+      "id": 106,
+      "user": "aaa@gmail.com",
+      "date": "2026-02-12",
+      "money": 16000,
+      "category": "교통비",
+      "history": "택시",
+      "memo": "늦음"
+    },
+    {
+      "id": 107,
+      "user": "test@gmail.com",
+      "date": "2026-02-13",
+      "money": 45000,
+      "category": "여가비",
+      "history": "술",
+      "memo": "친구"
+    },
+    {
+      "id": 108,
+      "user": "aaa@gmail.com",
+      "date": "2026-02-14",
+      "money": 55000,
+      "category": "주거/생활비",
+      "history": "인터넷",
+      "memo": "요금"
+    },
+
+    {
+      "id": 109,
+      "user": "test@gmail.com",
+      "date": "2026-02-15",
+      "money": 9000,
+      "category": "식비",
+      "history": "김밥",
+      "memo": "간단"
+    },
+    {
+      "id": 110,
+      "user": "aaa@gmail.com",
+      "date": "2026-02-16",
+      "money": 6000,
+      "category": "교통비",
+      "history": "버스",
+      "memo": "왕복"
+    },
+    {
+      "id": 111,
+      "user": "test@gmail.com",
+      "date": "2026-02-17",
+      "money": 30000,
+      "category": "여가비",
+      "history": "영화",
+      "memo": "주말"
+    },
+    {
+      "id": 112,
+      "user": "aaa@gmail.com",
+      "date": "2026-02-18",
+      "money": 65000,
+      "category": "주거/생활비",
+      "history": "관리비",
+      "memo": "월요금"
+    },
+    {
+      "id": 113,
+      "user": "test@gmail.com",
+      "date": "2026-02-19",
+      "money": 11000,
+      "category": "식비",
+      "history": "햄버거",
+      "memo": "점심"
+    },
+    {
+      "id": 114,
+      "user": "aaa@gmail.com",
+      "date": "2026-02-20",
+      "money": 14000,
+      "category": "교통비",
+      "history": "택시",
+      "memo": "지각"
+    },
+    {
+      "id": 115,
+      "user": "test@gmail.com",
+      "date": "2026-02-21",
+      "money": 26000,
+      "category": "여가비",
+      "history": "카페",
+      "memo": "스터디"
+    },
+    {
+      "id": 116,
+      "user": "aaa@gmail.com",
+      "date": "2026-02-22",
+      "money": 48000,
+      "category": "주거/생활비",
+      "history": "가스비",
+      "memo": "월요금"
+    },
+
+    {
+      "id": 117,
+      "user": "test@gmail.com",
+      "date": "2026-02-23",
+      "money": 17000,
+      "category": "식비",
+      "history": "치킨",
+      "memo": "야식"
+    },
+    {
+      "id": 118,
+      "user": "aaa@gmail.com",
+      "date": "2026-02-24",
+      "money": 5000,
+      "category": "교통비",
+      "history": "버스",
+      "memo": "왕복"
+    },
+    {
+      "id": 119,
+      "user": "test@gmail.com",
+      "date": "2026-02-25",
+      "money": 32000,
+      "category": "여가비",
+      "history": "영화",
+      "memo": "데이트"
+    },
+    {
+      "id": 120,
+      "user": "aaa@gmail.com",
+      "date": "2026-02-26",
+      "money": 70000,
+      "category": "주거/생활비",
+      "history": "관리비",
+      "memo": "월요금"
+    },
+    {
+      "id": 121,
+      "user": "test@gmail.com",
+      "date": "2026-02-27",
+      "money": 8000,
+      "category": "식비",
+      "history": "라면",
+      "memo": "야식"
+    },
+    {
+      "id": 122,
+      "user": "aaa@gmail.com",
+      "date": "2026-02-28",
+      "money": 15000,
+      "category": "교통비",
+      "history": "택시",
+      "memo": "늦음"
+    },
+
+    {
+      "id": 123,
+      "user": "test@gmail.com",
+      "date": "2026-03-01",
+      "money": 12000,
+      "category": "식비",
+      "history": "김밥",
+      "memo": "점심"
+    },
+    {
+      "id": 124,
+      "user": "aaa@gmail.com",
+      "date": "2026-03-02",
+      "money": 8000,
+      "category": "교통비",
+      "history": "버스",
+      "memo": "왕복"
+    },
+    {
+      "id": 125,
+      "user": "test@gmail.com",
+      "date": "2026-03-03",
+      "money": 25000,
+      "category": "여가비",
+      "history": "카페",
+      "memo": "스터디"
+    },
+    {
+      "id": 126,
+      "user": "aaa@gmail.com",
+      "date": "2026-03-04",
+      "money": 50000,
+      "category": "주거/생활비",
+      "history": "관리비",
+      "memo": "월요금"
+    },
+    {
+      "id": 127,
+      "user": "test@gmail.com",
+      "date": "2026-03-05",
+      "money": 18000,
+      "category": "식비",
+      "history": "치킨",
+      "memo": "야식"
+    },
+    {
+      "id": 128,
+      "user": "aaa@gmail.com",
+      "date": "2026-03-06",
+      "money": 15000,
+      "category": "교통비",
+      "history": "택시",
+      "memo": "지각"
+    },
+    {
+      "id": 129,
+      "user": "test@gmail.com",
+      "date": "2026-03-07",
+      "money": 30000,
+      "category": "여가비",
+      "history": "영화",
+      "memo": "혼영"
+    },
+    {
+      "id": 130,
+      "user": "aaa@gmail.com",
+      "date": "2026-03-08",
+      "money": 60000,
+      "category": "주거/생활비",
+      "history": "전기세",
+      "memo": "월요금"
+    },
+
+    {
+      "id": 131,
+      "user": "test@gmail.com",
+      "date": "2026-03-09",
+      "money": 10000,
+      "category": "식비",
+      "history": "라면",
+      "memo": "야식"
+    },
+    {
+      "id": 132,
+      "user": "aaa@gmail.com",
+      "date": "2026-03-10",
+      "money": 7000,
+      "category": "교통비",
+      "history": "버스",
+      "memo": "왕복"
+    },
+    {
+      "id": 133,
+      "user": "test@gmail.com",
+      "date": "2026-03-11",
+      "money": 28000,
+      "category": "여가비",
+      "history": "카페",
+      "memo": "친구"
+    },
+    {
+      "id": 134,
+      "user": "aaa@gmail.com",
+      "date": "2026-03-12",
+      "money": 52000,
+      "category": "주거/생활비",
+      "history": "가스비",
+      "memo": "월요금"
+    },
+    {
+      "id": 135,
+      "user": "test@gmail.com",
+      "date": "2026-03-13",
+      "money": 13000,
+      "category": "식비",
+      "history": "국밥",
+      "memo": "점심"
+    },
+    {
+      "id": 136,
+      "user": "aaa@gmail.com",
+      "date": "2026-03-14",
+      "money": 16000,
+      "category": "교통비",
+      "history": "택시",
+      "memo": "늦음"
+    },
+    {
+      "id": 137,
+      "user": "test@gmail.com",
+      "date": "2026-03-15",
+      "money": 45000,
+      "category": "여가비",
+      "history": "술",
+      "memo": "친구"
+    },
+    {
+      "id": 138,
+      "user": "aaa@gmail.com",
+      "date": "2026-03-16",
+      "money": 55000,
+      "category": "주거/생활비",
+      "history": "인터넷",
+      "memo": "요금"
+    },
+    {
+      "id": 139,
+      "user": "test@gmail.com",
+      "date": "2026-03-17",
+      "money": 9000,
+      "category": "식비",
+      "history": "김밥",
+      "memo": "간단"
+    },
+    {
+      "id": 140,
+      "user": "aaa@gmail.com",
+      "date": "2026-03-18",
+      "money": 6000,
+      "category": "교통비",
+      "history": "버스",
+      "memo": "왕복"
+    },
+    {
+      "id": 141,
+      "user": "test@gmail.com",
+      "date": "2026-03-19",
+      "money": 30000,
+      "category": "여가비",
+      "history": "영화",
+      "memo": "주말"
+    },
+    {
+      "id": 142,
+      "user": "aaa@gmail.com",
+      "date": "2026-03-20",
+      "money": 65000,
+      "category": "주거/생활비",
+      "history": "관리비",
+      "memo": "월요금"
+    },
+    {
+      "id": 143,
+      "user": "test@gmail.com",
+      "date": "2026-03-21",
+      "money": 11000,
+      "category": "식비",
+      "history": "햄버거",
+      "memo": "점심"
+    },
+    {
+      "id": 144,
+      "user": "aaa@gmail.com",
+      "date": "2026-03-22",
+      "money": 14000,
+      "category": "교통비",
+      "history": "택시",
+      "memo": "지각"
+    },
+    {
+      "id": 145,
+      "user": "test@gmail.com",
+      "date": "2026-03-23",
+      "money": 26000,
+      "category": "여가비",
+      "history": "카페",
+      "memo": "스터디"
+    },
+    {
+      "id": 146,
+      "user": "aaa@gmail.com",
+      "date": "2026-03-24",
+      "money": 48000,
+      "category": "주거/생활비",
+      "history": "가스비",
+      "memo": "월요금"
+    },
+    {
+      "id": 147,
+      "user": "test@gmail.com",
+      "date": "2026-03-25",
+      "money": 17000,
+      "category": "식비",
+      "history": "치킨",
+      "memo": "야식"
+    },
+    {
+      "id": 148,
+      "user": "aaa@gmail.com",
+      "date": "2026-03-26",
+      "money": 5000,
+      "category": "교통비",
+      "history": "버스",
+      "memo": "왕복"
+    },
+
+    {
+      "id": 149,
+      "user": "test@gmail.com",
+      "date": "2026-03-27",
+      "money": 32000,
+      "category": "여가비",
+      "history": "영화",
+      "memo": "데이트"
+    },
+    {
+      "id": 150,
+      "user": "aaa@gmail.com",
+      "date": "2026-03-28",
+      "money": 70000,
+      "category": "주거/생활비",
+      "history": "관리비",
+      "memo": "월요금"
+    },
+    {
+      "id": 151,
+      "user": "test@gmail.com",
+      "date": "2026-03-29",
+      "money": 8000,
+      "category": "식비",
+      "history": "라면",
+      "memo": "야식"
+    },
+    {
+      "id": 152,
+      "user": "aaa@gmail.com",
+      "date": "2026-03-30",
+      "money": 15000,
+      "category": "교통비",
+      "history": "택시",
+      "memo": "늦음"
+    },
+
+    {
+      "id": 153,
+      "user": "test@gmail.com",
+      "date": "2026-03-31",
+      "money": 12000,
+      "category": "식비",
+      "history": "김밥",
+      "memo": "점심"
+    },
+    {
+      "id": 154,
+      "user": "aaa@gmail.com",
+      "date": "2026-04-01",
+      "money": 8000,
+      "category": "교통비",
+      "history": "버스",
+      "memo": "왕복"
+    },
+    {
+      "id": 155,
+      "user": "test@gmail.com",
+      "date": "2026-04-02",
+      "money": 25000,
+      "category": "여가비",
+      "history": "카페",
+      "memo": "스터디"
+    },
+    {
+      "id": 156,
+      "user": "aaa@gmail.com",
+      "date": "2026-04-03",
+      "money": 50000,
+      "category": "주거/생활비",
+      "history": "관리비",
+      "memo": "월요금"
+    },
+    {
+      "id": 157,
+      "user": "test@gmail.com",
+      "date": "2026-04-04",
+      "money": 18000,
+      "category": "식비",
+      "history": "치킨",
+      "memo": "야식"
+    },
+    {
+      "id": 158,
+      "user": "aaa@gmail.com",
+      "date": "2026-04-05",
+      "money": 15000,
+      "category": "교통비",
+      "history": "택시",
+      "memo": "지각"
+    },
+    {
+      "id": 159,
+      "user": "test@gmail.com",
+      "date": "2026-04-06",
+      "money": 30000,
+      "category": "여가비",
+      "history": "영화",
+      "memo": "혼영"
+    },
+    {
+      "id": 160,
+      "user": "aaa@gmail.com",
+      "date": "2026-04-07",
+      "money": 60000,
+      "category": "주거/생활비",
+      "history": "전기세",
+      "memo": "월요금"
+    },
+
+    {
+      "id": 161,
+      "user": "test@gmail.com",
+      "date": "2026-04-08",
+      "money": 10000,
+      "category": "식비",
+      "history": "라면",
+      "memo": "야식"
+    },
+    {
+      "id": 162,
+      "user": "aaa@gmail.com",
+      "date": "2026-04-09",
+      "money": 7000,
+      "category": "교통비",
+      "history": "버스",
+      "memo": "왕복"
+    },
+    {
+      "id": 163,
+      "user": "test@gmail.com",
+      "date": "2026-04-10",
+      "money": 28000,
+      "category": "여가비",
+      "history": "카페",
+      "memo": "친구"
+    },
+    {
+      "id": 164,
+      "user": "aaa@gmail.com",
+      "date": "2026-04-11",
+      "money": 52000,
+      "category": "주거/생활비",
+      "history": "가스비",
+      "memo": "월요금"
+    },
+    {
+      "id": 165,
+      "user": "test@gmail.com",
+      "date": "2026-04-12",
+      "money": 13000,
+      "category": "식비",
+      "history": "국밥",
+      "memo": "점심"
+    },
+    {
+      "id": 166,
+      "user": "aaa@gmail.com",
+      "date": "2026-04-13",
+      "money": 16000,
+      "category": "교통비",
+      "history": "택시",
+      "memo": "늦음"
+    },
+    {
+      "id": 167,
+      "user": "test@gmail.com",
+      "date": "2026-04-14",
+      "money": 45000,
+      "category": "여가비",
+      "history": "술",
+      "memo": "친구"
+    },
+    {
+      "id": 168,
+      "user": "aaa@gmail.com",
+      "date": "2026-04-15",
+      "money": 55000,
+      "category": "주거/생활비",
+      "history": "인터넷",
+      "memo": "요금"
+    },
+
+    {
+      "id": 169,
+      "user": "test@gmail.com",
+      "date": "2026-04-16",
+      "money": 9000,
+      "category": "식비",
+      "history": "김밥",
+      "memo": "간단"
+    },
+    {
+      "id": 170,
+      "user": "aaa@gmail.com",
+      "date": "2026-04-17",
+      "money": 6000,
+      "category": "교통비",
+      "history": "버스",
+      "memo": "왕복"
+    },
+    {
+      "id": 171,
+      "user": "test@gmail.com",
+      "date": "2026-04-18",
+      "money": 30000,
+      "category": "여가비",
+      "history": "영화",
+      "memo": "주말"
+    },
+    {
+      "id": 172,
+      "user": "aaa@gmail.com",
+      "date": "2026-04-19",
+      "money": 65000,
+      "category": "주거/생활비",
+      "history": "관리비",
+      "memo": "월요금"
+    },
+    {
+      "id": 173,
+      "user": "test@gmail.com",
+      "date": "2026-04-20",
+      "money": 11000,
+      "category": "식비",
+      "history": "햄버거",
+      "memo": "점심"
+    },
+    {
+      "id": 174,
+      "user": "aaa@gmail.com",
+      "date": "2026-04-21",
+      "money": 14000,
+      "category": "교통비",
+      "history": "택시",
+      "memo": "지각"
+    },
+    {
+      "id": 175,
+      "user": "test@gmail.com",
+      "date": "2026-04-22",
+      "money": 26000,
+      "category": "여가비",
+      "history": "카페",
+      "memo": "스터디"
+    },
+    {
+      "id": 176,
+      "user": "aaa@gmail.com",
+      "date": "2026-04-23",
+      "money": 48000,
+      "category": "주거/생활비",
+      "history": "가스비",
+      "memo": "월요금"
+    },
+
+    {
+      "id": 177,
+      "user": "test@gmail.com",
+      "date": "2026-04-24",
+      "money": 17000,
+      "category": "식비",
+      "history": "치킨",
+      "memo": "야식"
+    },
+    {
+      "id": 178,
+      "user": "aaa@gmail.com",
+      "date": "2026-04-25",
+      "money": 5000,
+      "category": "교통비",
+      "history": "버스",
+      "memo": "왕복"
+    },
+    {
+      "id": 179,
+      "user": "test@gmail.com",
+      "date": "2026-04-26",
+      "money": 32000,
+      "category": "여가비",
+      "history": "영화",
+      "memo": "데이트"
+    },
+    {
+      "id": 180,
+      "user": "aaa@gmail.com",
+      "date": "2026-04-27",
+      "money": 70000,
+      "category": "주거/생활비",
+      "history": "관리비",
+      "memo": "월요금"
+    },
+    {
+      "id": 181,
+      "user": "test@gmail.com",
+      "date": "2026-04-28",
+      "money": 8000,
+      "category": "식비",
+      "history": "라면",
+      "memo": "야식"
+    },
+    {
+      "id": 182,
+      "user": "aaa@gmail.com",
+      "date": "2026-04-29",
+      "money": 15000,
+      "category": "교통비",
+      "history": "택시",
+      "memo": "늦음"
+    },
+
+    {
+      "id": 183,
+      "user": "test@gmail.com",
+      "date": "2026-04-30",
+      "money": 12000,
+      "category": "식비",
+      "history": "김밥",
+      "memo": "점심"
+    },
+    {
+      "id": 184,
+      "user": "aaa@gmail.com",
+      "date": "2026-04-30",
+      "money": 8000,
+      "category": "교통비",
+      "history": "버스",
+      "memo": "왕복"
+    },
+    {
+      "id": 185,
+      "user": "test@gmail.com",
+      "date": "2026-04-29",
+      "money": 25000,
+      "category": "여가비",
+      "history": "카페",
+      "memo": "스터디"
+    },
+    {
+      "id": 186,
+      "user": "aaa@gmail.com",
+      "date": "2026-04-28",
+      "money": 50000,
+      "category": "주거/생활비",
+      "history": "관리비",
+      "memo": "월요금"
+    },
+    {
+      "id": 187,
+      "user": "test@gmail.com",
+      "date": "2026-04-27",
+      "money": 18000,
+      "category": "식비",
+      "history": "치킨",
+      "memo": "야식"
+    },
+    {
+      "id": 188,
+      "user": "aaa@gmail.com",
+      "date": "2026-04-26",
+      "money": 15000,
+      "category": "교통비",
+      "history": "택시",
+      "memo": "지각"
+    },
+    {
+      "id": 189,
+      "user": "test@gmail.com",
+      "date": "2026-04-25",
+      "money": 30000,
+      "category": "여가비",
+      "history": "영화",
+      "memo": "혼영"
+    },
+    {
+      "id": 190,
+      "user": "aaa@gmail.com",
+      "date": "2026-04-24",
+      "money": 60000,
+      "category": "주거/생활비",
+      "history": "전기세",
+      "memo": "월요금"
+    },
+
+    {
+      "id": 191,
+      "user": "test@gmail.com",
+      "date": "2026-04-23",
+      "money": 10000,
+      "category": "식비",
+      "history": "라면",
+      "memo": "야식"
+    },
+    {
+      "id": 192,
+      "user": "aaa@gmail.com",
+      "date": "2026-04-22",
+      "money": 7000,
+      "category": "교통비",
+      "history": "버스",
+      "memo": "왕복"
+    },
+    {
+      "id": 193,
+      "user": "test@gmail.com",
+      "date": "2026-04-21",
+      "money": 28000,
+      "category": "여가비",
+      "history": "카페",
+      "memo": "친구"
+    },
+    {
+      "id": 194,
+      "user": "aaa@gmail.com",
+      "date": "2026-04-20",
+      "money": 52000,
+      "category": "주거/생활비",
+      "history": "가스비",
+      "memo": "월요금"
+    },
+    {
+      "id": 195,
+      "user": "test@gmail.com",
+      "date": "2026-04-19",
+      "money": 13000,
+      "category": "식비",
+      "history": "국밥",
+      "memo": "점심"
+    },
+    {
+      "id": 196,
+      "user": "aaa@gmail.com",
+      "date": "2026-04-18",
+      "money": 16000,
+      "category": "교통비",
+      "history": "택시",
+      "memo": "늦음"
+    },
+    {
+      "id": 197,
+      "user": "test@gmail.com",
+      "date": "2026-04-17",
+      "money": 45000,
+      "category": "여가비",
+      "history": "술",
+      "memo": "친구"
+    },
+    {
+      "id": 198,
+      "user": "aaa@gmail.com",
+      "date": "2026-04-16",
+      "money": 55000,
+      "category": "주거/생활비",
+      "history": "인터넷",
+      "memo": "요금"
+    },
+    {
+      "id": 199,
+      "user": "test@gmail.com",
+      "date": "2026-04-15",
+      "money": 9000,
+      "category": "식비",
+      "history": "김밥",
+      "memo": "간단"
+    },
+    {
+      "id": 200,
+      "user": "aaa@gmail.com",
+      "date": "2026-04-14",
+      "money": 6000,
+      "category": "교통비",
+      "history": "버스",
+      "memo": "왕복"
+    },
+    {
+      "id": 201,
+      "user": "test@gmail.com",
+      "date": "2026-04-13",
+      "money": 30000,
+      "category": "여가비",
+      "history": "영화",
+      "memo": "주말"
+    },
+    {
+      "id": 202,
+      "user": "aaa@gmail.com",
+      "date": "2026-04-12",
+      "money": 65000,
+      "category": "주거/생활비",
+      "history": "관리비",
+      "memo": "월요금"
     }
   ]
 }
