@@ -3,11 +3,8 @@ import { useAuthStore } from '@/stores/authStore';
 import LoginPage from '@/pages/LoginPage.vue';
 import RegisterPage from '@/pages/RegisterPage.vue';
 import CalendarPage from '@/pages/CalendarPage.vue';
-<<<<<<< HEAD
 import AnalysisPage from '@/pages/AnalysisPage.vue';
-=======
 import LogoutPage from '@/pages/LogoutPage.vue';
->>>>>>> 4398336982a777de694517fc5bf670b452bf2c50
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),

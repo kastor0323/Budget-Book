@@ -17,7 +17,9 @@
       </form>
       <p class="signup-text">
         계정이 없으신가요?
-        <router-link to="/api/signup" class="signup-link">회원가입</router-link>
+        <router-link to="/auth/signup" class="signup-link"
+          >회원가입</router-link
+        >
       </p>
     </div>
   </div>
