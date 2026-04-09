@@ -14,6 +14,8 @@ export const useAuthStore = defineStore('auth', {
       if (user) {
         this.currentUser = user;
         this.isAuthenticated = true;
+
+        //세션 가능하지만 실제론 보안에 취약함
         localStorage.setItem('currentUser', JSON.stringify(user));
         return true;
       } else {
