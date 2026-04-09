@@ -1,5 +1,5 @@
 <script setup>
-import { computed } from 'vue'
+import { computed } from 'vue';
 
 const props = defineProps({
   selectedDate: {
@@ -14,29 +14,32 @@ const props = defineProps({
     type: String,
     default: '',
   },
-})
+});
 
 const uiText = {
   transactionList: '\uAC70\uB798 \uB0B4\uC5ED',
-  noTransactionsSuffix: '\uC5D0 \uD45C\uC2DC\uD560 \uAC70\uB798 \uB0B4\uC5ED\uC774 \uC5C6\uC2B5\uB2C8\uB2E4.',
-}
+  noTransactionsSuffix:
+    '\uC5D0 \uD45C\uC2DC\uD560 \uAC70\uB798 \uB0B4\uC5ED\uC774 \uC5C6\uC2B5\uB2C8\uB2E4.',
+};
 
 function buildTransactionTitle(item) {
-  if (item.history) return item.history
-  if (item.category) return item.category
-  return item.type === 'income' ? '\uC218\uC785 \uB0B4\uC5ED' : '\uC9C0\uCD9C \uB0B4\uC5ED'
+  if (item.history) return item.history;
+  if (item.category) return item.category;
+  return item.type === 'income'
+    ? '\uC218\uC785 \uB0B4\uC5ED'
+    : '\uC9C0\uCD9C \uB0B4\uC5ED';
 }
 
 function buildTransactionSubtitle(item) {
-  const typeLabel = item.type === 'income' ? '\uC218\uC785' : '\uC9C0\uCD9C'
-  return item.category ? `${typeLabel} \u00B7 ${item.category}` : typeLabel
+  const typeLabel = item.type === 'income' ? '\uC218\uC785' : '\uC9C0\uCD9C';
+  return item.category ? `${typeLabel} \u00B7 ${item.category}` : typeLabel;
 }
 
-const emit = defineEmits(['edit', 'delete'])
+const emit = defineEmits(['edit', 'delete']);
 
 function formatTransactionAmount(item) {
-  const sign = item.type === 'income' ? '+' : '-'
-  return `${sign}${item.amount.toLocaleString('ko-KR')}\uC6D0`
+  const sign = item.type === 'income' ? '+' : '-';
+  return `${sign}${item.amount.toLocaleString('ko-KR')}\uC6D0`;
 }
 
 const mappedTransactions = computed(() =>
@@ -46,13 +49,15 @@ const mappedTransactions = computed(() =>
     subtitle: buildTransactionSubtitle(item),
     displayAmount: formatTransactionAmount(item),
   })),
-)
+);
 </script>
 
 <template>
   <section class="transaction-list">
     <header class="list-header">
-      <h3>{{ `${uiText.transactionList} (${mappedTransactions.length}건)` }}</h3>
+      <h3>
+        {{ `${uiText.transactionList} (${mappedTransactions.length}건)` }}
+      </h3>
     </header>
 
     <p v-if="loadError" class="list-message list-error">{{ loadError }}</p>
@@ -80,8 +85,20 @@ const mappedTransactions = computed(() =>
           {{ item.displayAmount }}
         </div>
         <div class="transaction-actions">
-          <button type="button" class="action-btn edit-btn" @click.stop="emit('edit', item)">수정</button>
-          <button type="button" class="action-btn delete-btn" @click.stop="emit('delete', item)">삭제</button>
+          <button
+            type="button"
+            class="action-btn edit-btn"
+            @click.stop="emit('edit', item)"
+          >
+            수정
+          </button>
+          <button
+            type="button"
+            class="action-btn delete-btn"
+            @click.stop="emit('delete', item)"
+          >
+            삭제
+          </button>
         </div>
       </article>
     </div>
