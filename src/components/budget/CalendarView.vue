@@ -1,5 +1,5 @@
 <script setup>
-import { computed } from 'vue'
+import { computed } from 'vue';
 
 const props = defineProps({
   ledgerEntries: {
@@ -22,9 +22,9 @@ const props = defineProps({
     type: String,
     default: '',
   },
-})
+});
 
-const emit = defineEmits(['month-change', 'date-select'])
+const emit = defineEmits(['month-change', 'date-select']);
 
 const weekdayLabels = [
   { label: '\uC77C', tone: 'sun' },
@@ -34,89 +34,108 @@ const weekdayLabels = [
   { label: '\uBAA9', tone: 'default' },
   { label: '\uAE08', tone: 'default' },
   { label: '\uD1A0', tone: 'sat' },
-]
+];
 
-const today = new Date()
-const todayKey = createDateKey(today.getFullYear(), today.getMonth() + 1, today.getDate())
+const today = new Date();
+const todayKey = createDateKey(
+  today.getFullYear(),
+  today.getMonth() + 1,
+  today.getDate(),
+);
 
 function parseLedgerDate(dateString) {
-  const [year, month, day] = dateString.split('-').map(Number)
-  return { year, month, day }
+  const [year, month, day] = dateString.split('-').map(Number);
+  return { year, month, day };
 }
 
 function createDateKey(year, month, day) {
-  return `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`
+  return `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
 }
 
 function formatSignedAmount(amount, sign) {
-  if (!amount) return ''
-  return `${sign}${amount.toLocaleString('ko-KR')}`
+  if (!amount) return '';
+  return `${sign}${amount.toLocaleString('ko-KR')}`;
 }
 
 function formatSummaryAmount(amount) {
-  const sign = amount > 0 ? '+' : amount < 0 ? '-' : ''
-  return `${sign}${Math.abs(amount).toLocaleString('ko-KR')}\uC6D0`
+  const sign = amount > 0 ? '+' : amount < 0 ? '-' : '';
+  return `${sign}${Math.abs(amount).toLocaleString('ko-KR')}\uC6D0`;
 }
 
-const currentYear = computed(() => props.visibleMonth.getFullYear())
-const currentMonthIndex = computed(() => props.visibleMonth.getMonth())
-const currentMonthNumber = computed(() => currentMonthIndex.value + 1)
+const currentYear = computed(() => props.visibleMonth.getFullYear());
+const currentMonthIndex = computed(() => props.visibleMonth.getMonth());
+const currentMonthNumber = computed(() => currentMonthIndex.value + 1);
 
 const currentMonthLabel = computed(
   () => `${currentYear.value}\uB144 ${currentMonthNumber.value}\uC6D4`,
-)
+);
 
 const monthlyCalendarResponse = computed(() => {
-  const dailySummaryMap = new Map()
+  const dailySummaryMap = new Map();
 
   props.ledgerEntries.forEach((entry) => {
-    const { year, month, day } = parseLedgerDate(entry.date)
+    const { year, month, day } = parseLedgerDate(entry.date);
 
     if (year !== currentYear.value || month !== currentMonthNumber.value) {
-      return
+      return;
     }
 
-    const dateKey = createDateKey(year, month, day)
+    const dateKey = createDateKey(year, month, day);
     const existing = dailySummaryMap.get(dateKey) ?? {
       date: dateKey,
       totalIncome: 0,
       totalExpense: 0,
-    }
+    };
 
     if (entry.type === 'income') {
-      existing.totalIncome += entry.amount
+      existing.totalIncome += entry.amount;
     } else {
-      existing.totalExpense += entry.amount
+      existing.totalExpense += entry.amount;
     }
 
-    dailySummaryMap.set(dateKey, existing)
-  })
+    dailySummaryMap.set(dateKey, existing);
+  });
 
   return [...dailySummaryMap.values()].sort((left, right) =>
     left.date.localeCompare(right.date),
-  )
-})
+  );
+});
 
 const monthlySummaryMap = computed(() =>
   monthlyCalendarResponse.value.reduce((accumulator, item) => {
-    accumulator[item.date] = item
-    return accumulator
+    accumulator[item.date] = item;
+    return accumulator;
   }, {}),
-)
+);
 
 const calendarCells = computed(() => {
-  const firstWeekday = new Date(currentYear.value, currentMonthIndex.value, 1).getDay()
-  const lastDateOfMonth = new Date(currentYear.value, currentMonthIndex.value + 1, 0).getDate()
+  const firstWeekday = new Date(
+    currentYear.value,
+    currentMonthIndex.value,
+    1,
+  ).getDay();
+  const lastDateOfMonth = new Date(
+    currentYear.value,
+    currentMonthIndex.value + 1,
+    0,
+  ).getDate();
 
-  const leadingEmptyCells = Array.from({ length: firstWeekday }, (_, index) => ({
-    key: `empty-${index}`,
-    isEmpty: true,
-  }))
+  const leadingEmptyCells = Array.from(
+    { length: firstWeekday },
+    (_, index) => ({
+      key: `empty-${index}`,
+      isEmpty: true,
+    }),
+  );
 
   const datedCells = Array.from({ length: lastDateOfMonth }, (_, index) => {
-    const day = index + 1
-    const dateKey = createDateKey(currentYear.value, currentMonthNumber.value, day)
-    const summary = monthlySummaryMap.value[dateKey]
+    const day = index + 1;
+    const dateKey = createDateKey(
+      currentYear.value,
+      currentMonthNumber.value,
+      day,
+    );
+    const summary = monthlySummaryMap.value[dateKey];
 
     return {
       key: dateKey,
@@ -126,29 +145,49 @@ const calendarCells = computed(() => {
       income: formatSignedAmount(summary?.totalIncome ?? 0, '+'),
       expense: formatSignedAmount(summary?.totalExpense ?? 0, '-'),
       isToday: dateKey === todayKey,
-    }
-  })
+    };
+  });
 
-  return [...leadingEmptyCells, ...datedCells]
-})
+  return [...leadingEmptyCells, ...datedCells];
+});
 
 const summaryCards = computed(() => {
-  const monthlyIncome = monthlyCalendarResponse.value.reduce((sum, item) => sum + item.totalIncome, 0)
-  const monthlyExpense = monthlyCalendarResponse.value.reduce((sum, item) => sum + item.totalExpense, 0)
-  const balance = monthlyIncome - monthlyExpense
+  const monthlyIncome = monthlyCalendarResponse.value.reduce(
+    (sum, item) => sum + item.totalIncome,
+    0,
+  );
+  const monthlyExpense = monthlyCalendarResponse.value.reduce(
+    (sum, item) => sum + item.totalExpense,
+    0,
+  );
+  const balance = monthlyIncome - monthlyExpense;
 
   return [
-    { label: '\uC218\uC785', amount: formatSummaryAmount(monthlyIncome), tone: 'income' },
-    { label: '\uC9C0\uCD9C', amount: formatSummaryAmount(-monthlyExpense), tone: 'expense' },
-    { label: '\uC794\uC561', amount: formatSummaryAmount(balance), tone: 'balance' },
-  ]
-})
+    {
+      label: '\uC218\uC785',
+      amount: formatSummaryAmount(monthlyIncome),
+      tone: 'income',
+    },
+    {
+      label: '\uC9C0\uCD9C',
+      amount: formatSummaryAmount(-monthlyExpense),
+      tone: 'expense',
+    },
+    {
+      label: '\uC794\uC561',
+      amount: formatSummaryAmount(balance),
+      tone: 'balance',
+    },
+  ];
+});
 </script>
 
 <template>
   <section class="calendar-view d-flex flex-column gap-3">
     <article class="calendar-panel">
-      <div class="calendar-heading d-flex align-items-center justify-content-between">
+      <div
+        class="calendar-heading d-flex align-items-center justify-content-between"
+      >
         <button
           type="button"
           class="month-arrow btn btn-link p-0 text-decoration-none"
@@ -173,7 +212,8 @@ const summaryCards = computed(() => {
       </div>
 
       <div v-else-if="isLoading" class="calendar-status">
-        \uB370\uC774\uD130\uB97C \uBD88\uB7EC\uC624\uB294 \uC911\uC785\uB2C8\uB2E4.
+        \uB370\uC774\uD130\uB97C \uBD88\uB7EC\uC624\uB294
+        \uC911\uC785\uB2C8\uB2E4.
       </div>
 
       <template v-else>
@@ -193,12 +233,12 @@ const summaryCards = computed(() => {
             v-for="cell in calendarCells"
             :key="cell.key"
             type="button"
-          class="date-cell"
-          :class="{
-            'date-cell-empty': cell.isEmpty,
-            'date-cell-today': cell.isToday,
-            'date-cell-clickable': !cell.isEmpty,
-          }"
+            class="date-cell"
+            :class="{
+              'date-cell-empty': cell.isEmpty,
+              'date-cell-today': cell.isToday,
+              'date-cell-clickable': !cell.isEmpty,
+            }"
             :disabled="cell.isEmpty"
             @click="!cell.isEmpty && emit('date-select', cell.dateKey)"
           >

@@ -135,6 +135,44 @@ export const useBudgetStore = defineStore('budget', () => {
     }
   }
 
+  async function updateTransaction(id, type, updatedData) {
+    try {
+      const endpoint = type === 'income' ? 'income' : 'expenditure'
+      
+      const serverData = {
+        date: updatedData.date,
+        money: updatedData.amount,
+        category: updatedData.category,
+        memo: updatedData.memo,
+        history: updatedData.history
+      }
+
+      await axios.patch(`${API_BASE_URL}/${endpoint}/${id}`, serverData)
+      await loadLedgerEntries()
+    } catch (error) {
+      console.error('\uAC00\uACC4\uBD80 \uC218\uC815 \uC2E4\uD328', error)
+      alert('\uC218\uC815\uC5D0 \uC2E4\uD328\uD588\uC2B5\uB2C8\uB2E4.')
+    }
+  }
+
+  async function deleteTransaction(id, type) {
+    try {
+      console.log(`[deleteTransaction] Starting deletion for id: ${id}, type: ${type}`)
+      const endpoint = type === 'income' ? 'income' : 'expenditure'
+      const targetUrl = `${API_BASE_URL}/${endpoint}/${id}`
+      console.log(`[deleteTransaction] Making DELETE request to: ${targetUrl}`)
+      
+      const response = await axios.delete(targetUrl)
+      console.log(`[deleteTransaction] Request successful. Status:`, response.status)
+
+      await loadLedgerEntries()
+      console.log(`[deleteTransaction] Reload complete.`)
+    } catch (error) {
+      console.error('\uAC00\uACC4\uBD80 \uC0AD\uC81C \uC2E4\uD328', error)
+      alert('\uC0AD\uC81C\uC5D0 \uC2E4\uD328\uD588\uC2B5\uB2C8\uB2E4: ' + (error.message || ''))
+    }
+  }
+
   function changeMonth(offset) {
     visibleMonth.value = new Date(
       visibleMonth.value.getFullYear(),
@@ -174,5 +212,7 @@ export const useBudgetStore = defineStore('budget', () => {
     toggleSelectedDate,
     updateFilters,
     createDateKey,
+    updateTransaction,
+    deleteTransaction,
   }
 })

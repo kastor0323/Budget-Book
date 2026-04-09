@@ -1,5 +1,5 @@
 <script setup>
-import { computed } from 'vue'
+import { computed } from 'vue';
 
 const props = defineProps({
   selectedDate: {
@@ -29,9 +29,9 @@ const props = defineProps({
     type: String,
     default: '',
   },
-})
+});
 
-const emit = defineEmits(['filter-change'])
+const emit = defineEmits(['filter-change']);
 
 const uiText = {
   dailySummaryTitle: '\uC77C\uC77C \uC694\uC57D',
@@ -41,44 +41,54 @@ const uiText = {
   all: '\uC804\uCCB4',
   income: '\uC218\uC785',
   expense: '\uC9C0\uCD9C',
-  timeDesc: '\uC2DC\uAC04 \uB0B4\uB9BC\uCC28\uC21C',
-  timeAsc: '\uC2DC\uAC04 \uC624\uB984\uCC28\uC21C',
   amountDesc: '\uAE08\uC561 \uB0B4\uB9BC\uCC28\uC21C',
   amountAsc: '\uAE08\uC561 \uC624\uB984\uCC28\uC21C',
-}
+};
 
 function formatDateLabel(dateString) {
-  const [year, month, day] = dateString.split('-').map(Number)
-  return `${year}\uB144 ${month}\uC6D4 ${day}\uC77C`
+  const [year, month, day] = dateString.split('-').map(Number);
+  return `${year}\uB144 ${month}\uC6D4 ${day}\uC77C`;
 }
 
 function formatSummaryAmount(amount) {
-  const sign = amount > 0 ? '+' : amount < 0 ? '-' : ''
-  return `${sign}${Math.abs(amount).toLocaleString('ko-KR')}\uC6D0`
+  const sign = amount > 0 ? '+' : amount < 0 ? '-' : '';
+  return `${sign}${Math.abs(amount).toLocaleString('ko-KR')}\uC6D0`;
 }
 
 const dailySummary = computed(() => {
   const income = props.transactions
     .filter((item) => item.type === 'income')
-    .reduce((sum, item) => sum + item.amount, 0)
+    .reduce((sum, item) => sum + item.amount, 0);
 
   const expense = props.transactions
     .filter((item) => item.type === 'expense')
-    .reduce((sum, item) => sum + item.amount, 0)
+    .reduce((sum, item) => sum + item.amount, 0);
 
-  const balance = income - expense
+  const balance = income - expense;
 
   return [
-    { label: '\uC218\uC785', amount: formatSummaryAmount(income), tone: 'income' },
-    { label: '\uC9C0\uCD9C', amount: formatSummaryAmount(-expense), tone: 'expense' },
-    { label: '\uD569\uACC4', amount: formatSummaryAmount(balance), tone: 'balance' },
-  ]
-})
+    {
+      label: '\uC218\uC785',
+      amount: formatSummaryAmount(income),
+      tone: 'income',
+    },
+    {
+      label: '\uC9C0\uCD9C',
+      amount: formatSummaryAmount(-expense),
+      tone: 'expense',
+    },
+    {
+      label: '\uD569\uACC4',
+      amount: formatSummaryAmount(balance),
+      tone: 'balance',
+    },
+  ];
+});
 
 function updateFilter(key, event) {
   emit('filter-change', {
     [key]: event.target.value,
-  })
+  });
 }
 </script>
 
@@ -159,17 +169,25 @@ function updateFilter(key, event) {
       </div>
 
       <div class="filter-group">
-        <label for="transaction-sort">{{ uiText.sortBy }}</label>
-        <select
-          id="transaction-sort"
-          :value="filters.sort"
-          @change="updateFilter('sort', $event)"
-        >
-          <option value="time-desc">{{ uiText.timeDesc }}</option>
-          <option value="time-asc">{{ uiText.timeAsc }}</option>
-          <option value="amount-desc">{{ uiText.amountDesc }}</option>
-          <option value="amount-asc">{{ uiText.amountAsc }}</option>
-        </select>
+        <label>{{ uiText.sortBy }}</label>
+        <div class="sort-buttons">
+          <button
+            type="button"
+            class="sort-button"
+            :class="{ active: filters.sort === 'amount-desc' }"
+            @click="$emit('filter-change', { sort: 'amount-desc' })"
+          >
+            {{ uiText.amountDesc }}
+          </button>
+          <button
+            type="button"
+            class="sort-button"
+            :class="{ active: filters.sort === 'amount-asc' }"
+            @click="$emit('filter-change', { sort: 'amount-asc' })"
+          >
+            {{ uiText.amountAsc }}
+          </button>
+        </div>
       </div>
     </div>
 
@@ -294,6 +312,34 @@ function updateFilter(key, event) {
 .filter-group select:focus {
   border-color: #96a3ff;
   box-shadow: 0 0 0 4px rgba(104, 118, 255, 0.12);
+}
+
+.sort-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.sort-button {
+  flex: 1;
+  height: 48px;
+  border-radius: 14px;
+  border: 1px solid #dfe6f2;
+  background: #ffffff;
+  color: #6c7894;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.sort-button:hover {
+  background: #f8f9fc;
+}
+
+.sort-button.active {
+  border-color: #6876ff;
+  background: #f1f3ff;
+  color: #4f67ff;
 }
 
 .detail-message {

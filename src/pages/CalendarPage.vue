@@ -1,11 +1,13 @@
 <script setup>
-import { onMounted } from 'vue';
+import { onMounted, ref } from 'vue';
 import { storeToRefs } from 'pinia';
 
 import CalendarView from '../components/budget/CalendarView.vue';
 import TransactionDetail from '../components/budget/TransactionDetail.vue';
 import TransactionList from '../components/budget/TransactionList.vue';
+import TransactionModal from '../components/budget/TransactionModal.vue';
 import { useBudgetStore } from '../stores/budgetStore';
+import AppHeader from '@/components/AppHeader.vue';
 
 const budgetStore = useBudgetStore();
 const {
@@ -21,12 +23,37 @@ const {
   summarySourceTransactions,
 } = storeToRefs(budgetStore);
 
+const isEditModalOpen = ref(false);
+const editingTransaction = ref(null);
+
+function openEditModal(transaction) {
+  editingTransaction.value = transaction;
+  isEditModalOpen.value = true;
+}
+
+function closeEditModal() {
+  isEditModalOpen.value = false;
+  editingTransaction.value = null;
+}
+
+async function handleSaveTransaction(updatedData) {
+  await budgetStore.updateTransaction(updatedData.id, updatedData.type, updatedData);
+  closeEditModal();
+}
+
+async function handleDeleteTransaction(transaction) {
+  if (confirm('\uC815\uB9D0\uB85C \uC774 \uAC70\uB798 \uB0B4\uC5ED\uC744 \uC0AD\uC81C\uD558\uC2DC\uACA0\uC2B5\uB2C8\uAE4C?')) {
+    await budgetStore.deleteTransaction(transaction.id, transaction.type);
+  }
+}
+
 onMounted(() => {
   budgetStore.loadLedgerEntries();
 });
 </script>
 
 <template>
+  <AppHeader></AppHeader>
   <section class="calendar-page">
     <div class="page-body">
       <CalendarView
@@ -53,8 +80,17 @@ onMounted(() => {
           :selected-date="selectedDate"
           :transactions="selectedSummaryTransactions"
           :load-error="loadError"
+          @edit="openEditModal"
+          @delete="handleDeleteTransaction"
         />
       </section>
+
+      <TransactionModal
+        :show="isEditModalOpen"
+        :transaction="editingTransaction"
+        @close="closeEditModal"
+        @save="handleSaveTransaction"
+      />
     </div>
   </section>
 </template>

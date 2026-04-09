@@ -32,6 +32,8 @@ function buildTransactionSubtitle(item) {
   return item.category ? `${typeLabel} \u00B7 ${item.category}` : typeLabel
 }
 
+const emit = defineEmits(['edit', 'delete'])
+
 function formatTransactionAmount(item) {
   const sign = item.type === 'income' ? '+' : '-'
   return `${sign}${item.amount.toLocaleString('ko-KR')}\uC6D0`
@@ -76,6 +78,10 @@ const mappedTransactions = computed(() =>
 
         <div class="transaction-amount" :class="`amount-${item.type}`">
           {{ item.displayAmount }}
+        </div>
+        <div class="transaction-actions">
+          <button type="button" class="action-btn edit-btn" @click.stop="emit('edit', item)">수정</button>
+          <button type="button" class="action-btn delete-btn" @click.stop="emit('delete', item)">삭제</button>
         </div>
       </article>
     </div>
@@ -122,7 +128,7 @@ const mappedTransactions = computed(() =>
 
 .transaction-item {
   display: grid;
-  grid-template-columns: 50px minmax(0, 1fr) auto;
+  grid-template-columns: 50px minmax(0, 1fr) auto auto;
   gap: 14px;
   align-items: center;
   border-radius: 18px;
@@ -185,6 +191,35 @@ const mappedTransactions = computed(() =>
   color: #eb5148;
 }
 
+.transaction-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.action-btn {
+  background: none;
+  border: 1px solid #dfe6f2;
+  color: #6c7894;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.action-btn:hover {
+  background: #f1f3ff;
+  color: #4f67ff;
+  border-color: #96a3ff;
+}
+
+.delete-btn:hover {
+  background: #fff1ef;
+  color: #eb5148;
+  border-color: #ffb4ab;
+}
+
 @media (max-width: 420px) {
   .transaction-list {
     padding: 16px 14px;
@@ -195,7 +230,7 @@ const mappedTransactions = computed(() =>
   }
 
   .transaction-item {
-    grid-template-columns: 42px minmax(0, 1fr);
+    grid-template-columns: 42px minmax(0, 1fr) auto;
     gap: 12px;
     padding: 12px;
   }
@@ -218,6 +253,12 @@ const mappedTransactions = computed(() =>
     grid-column: 1 / -1;
     justify-self: end;
     font-size: 18px;
+  }
+
+  .transaction-actions {
+    grid-column: 1 / -1;
+    justify-self: end;
+    margin-top: -30px;
   }
 }
 </style>
