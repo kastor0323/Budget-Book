@@ -11,13 +11,21 @@
         <input v-model="email" type="email" class="text-input" required />
 
         <label class="input-label">비밀번호</label>
-        <input v-model="password" type="password" class="text-input" required />
+        <input
+          v-model="password"
+          type="password"
+          class="text-input"
+          autocomplete="current-password"
+          required
+        />
 
         <button type="submit" class="submit-btn">로그인</button>
       </form>
       <p class="signup-text">
         계정이 없으신가요?
-        <router-link to="/api/signup" class="signup-link">회원가입</router-link>
+        <router-link to="/auth/signup" class="signup-link"
+          >회원가입</router-link
+        >
       </p>
     </div>
   </div>

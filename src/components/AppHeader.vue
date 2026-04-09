@@ -1,35 +1,24 @@
 <template>
-  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-    <span class="navbar-brand ps-2">Duck Book</span>
-    <button
-      class="navbar-toggler"
-      type="button"
-      @click="isNavShow = !isNavShow"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div
-      :class="
-        isNavShow ? 'collapse navbar-collapse show' : 'collapse navbar-collapse'
-      "
-    >
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <router-link class="nav-link" to="/home">소비 분석</router-link>
-        </li>
-        <li class="nav-item">
-          <router-link class="nav-link" to="/user/me">마이페이지</router-link>
-        </li>
-        <li class="nav-item">
-          <router-link class="nav-link" to="/auth/login">로그아웃</router-link>
-        </li>
-      </ul>
+  <header class="topbar">
+    <div class="topbar-left">
+      <span class="topbar-brand">KB Budget Book</span>
     </div>
-  </nav>
+    <nav class="topbar-nav">
+      <router-link class="topbar-btn analysis" to="/analysis"
+        ><i
+          class="fa-solid fa-arrow-trend-down"
+          style="color: rgb(255, 255, 255)"
+        ></i>
+        소비 분석</router-link
+      >
+      <router-link class="topbar-btn profile" to="/user/me">
+        <i class="fa-solid fa-person" style="color: rgb(255, 255, 255)"></i>
+        마이페이지</router-link
+      >
+    </nav>
+  </header>
 </template>
 
 <script setup>
-import { ref } from 'vue';
-
-const isNavShow = ref(false);
+import '../styles/appHeader.css';
 </script>
