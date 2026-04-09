@@ -5,6 +5,7 @@ import RegisterPage from '@/pages/RegisterPage.vue';
 import CalendarPage from '@/pages/CalendarPage.vue';
 import AnalysisPage from '@/pages/AnalysisPage.vue';
 import LogoutPage from '@/pages/LogoutPage.vue';
+import MyPage from '@/pages/MyPage.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -40,16 +41,24 @@ const router = createRouter({
       component: AnalysisPage,
       meta: { requiresAuth: true },
     },
+    {
+      path: '/user/me',
+      name: 'MyPage',
+      component: MyPage,
+    },
+    {
+      path: '/analysis',
+      name: 'analysis',
+      component: AnalysisPage,
+    },
   ],
 });
 
-router.beforeEach((to, from, next) => {
+router.beforeEach((to, from) => {
   const authStore = useAuthStore();
 
   if (to.meta.requiresAuth && !authStore.currentUser) {
-    next('/auth/login');
-  } else {
-    next();
+    return '/auth/login';
   }
 });
 

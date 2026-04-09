@@ -11,7 +11,13 @@
         <input v-model="email" type="email" class="text-input" required />
 
         <label class="input-label">비밀번호</label>
-        <input v-model="password" type="password" class="text-input" required />
+        <input
+          v-model="password"
+          type="password"
+          class="text-input"
+          autocomplete="current-password"
+          required
+        />
 
         <button type="submit" class="submit-btn">로그인</button>
       </form>
