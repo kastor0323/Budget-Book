@@ -6,7 +6,6 @@ import CalendarPage from '@/pages/CalendarPage.vue';
 import AnalysisPage from '@/pages/AnalysisPage.vue';
 import LogoutPage from '@/pages/LogoutPage.vue';
 import MyPage from '@/pages/MyPage.vue';
-import AnalysisPage from '@/pages/AnalysisPage.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
