@@ -17,9 +17,309 @@
       "id": 1,
       "user": "test@gmail.com",
       "date": "2026-04-08",
-      "money": 30000,
+      "money": 3000000,
       "category": "월급",
       "memo": "부자가 되고싶어요"
+    },
+
+    {
+      "id": 2,
+      "user": "test@gmail.com",
+      "date": "2025-11-05",
+      "money": 80000,
+      "category": "기타수익",
+      "memo": "중고거래 수익"
+    },
+    {
+      "id": 3,
+      "user": "test@gmail.com",
+      "date": "2025-11-18",
+      "money": 120000,
+      "category": "기타수익",
+      "memo": "용돈"
+    },
+    {
+      "id": 4,
+      "user": "test@gmail.com",
+      "date": "2025-11-22",
+      "money": 2500000,
+      "category": "월급",
+      "memo": "11월 월급"
+    },
+
+    {
+      "id": 5,
+      "user": "aaa@gmail.com",
+      "date": "2025-11-07",
+      "money": 95000,
+      "category": "기타수익",
+      "memo": "중고거래 수익"
+    },
+    {
+      "id": 6,
+      "user": "aaa@gmail.com",
+      "date": "2025-11-16",
+      "money": 70000,
+      "category": "기타수익",
+      "memo": "용돈"
+    },
+    {
+      "id": 7,
+      "user": "aaa@gmail.com",
+      "date": "2025-11-22",
+      "money": 2500000,
+      "category": "월급",
+      "memo": "11월 월급"
+    },
+
+    {
+      "id": 8,
+      "user": "test@gmail.com",
+      "date": "2025-12-06",
+      "money": 60000,
+      "category": "기타수익",
+      "memo": "리워드 적립금"
+    },
+    {
+      "id": 9,
+      "user": "test@gmail.com",
+      "date": "2025-12-19",
+      "money": 110000,
+      "category": "기타수익",
+      "memo": "알바 정산"
+    },
+    {
+      "id": 10,
+      "user": "test@gmail.com",
+      "date": "2025-12-22",
+      "money": 2500000,
+      "category": "월급",
+      "memo": "12월 월급"
+    },
+
+    {
+      "id": 11,
+      "user": "aaa@gmail.com",
+      "date": "2025-12-09",
+      "money": 85000,
+      "category": "기타수익",
+      "memo": "리워드 적립금"
+    },
+    {
+      "id": 12,
+      "user": "aaa@gmail.com",
+      "date": "2025-12-17",
+      "money": 130000,
+      "category": "기타수익",
+      "memo": "알바 정산"
+    },
+    {
+      "id": 13,
+      "user": "aaa@gmail.com",
+      "date": "2025-12-22",
+      "money": 2500000,
+      "category": "월급",
+      "memo": "12월 월급"
+    },
+
+    {
+      "id": 14,
+      "user": "test@gmail.com",
+      "date": "2026-01-04",
+      "money": 90000,
+      "category": "기타수익",
+      "memo": "중고거래 수익"
+    },
+    {
+      "id": 15,
+      "user": "test@gmail.com",
+      "date": "2026-01-14",
+      "money": 75000,
+      "category": "기타수익",
+      "memo": "캐시백"
+    },
+    {
+      "id": 16,
+      "user": "test@gmail.com",
+      "date": "2026-01-22",
+      "money": 2500000,
+      "category": "월급",
+      "memo": "1월 월급"
+    },
+
+    {
+      "id": 17,
+      "user": "aaa@gmail.com",
+      "date": "2026-01-08",
+      "money": 100000,
+      "category": "기타수익",
+      "memo": "중고거래 수익"
+    },
+    {
+      "id": 18,
+      "user": "aaa@gmail.com",
+      "date": "2026-01-20",
+      "money": 65000,
+      "category": "기타수익",
+      "memo": "캐시백"
+    },
+    {
+      "id": 19,
+      "user": "aaa@gmail.com",
+      "date": "2026-01-22",
+      "money": 2500000,
+      "category": "월급",
+      "memo": "1월 월급"
+    },
+
+    {
+      "id": 20,
+      "user": "test@gmail.com",
+      "date": "2026-02-03",
+      "money": 70000,
+      "category": "기타수익",
+      "memo": "앱테크 수익"
+    },
+    {
+      "id": 21,
+      "user": "test@gmail.com",
+      "date": "2026-02-15",
+      "money": 140000,
+      "category": "기타수익",
+      "memo": "보너스 수당"
+    },
+    {
+      "id": 22,
+      "user": "test@gmail.com",
+      "date": "2026-02-22",
+      "money": 2500000,
+      "category": "월급",
+      "memo": "2월 월급"
+    },
+
+    {
+      "id": 23,
+      "user": "aaa@gmail.com",
+      "date": "2026-02-06",
+      "money": 80000,
+      "category": "기타수익",
+      "memo": "앱테크 수익"
+    },
+    {
+      "id": 24,
+      "user": "aaa@gmail.com",
+      "date": "2026-02-18",
+      "money": 125000,
+      "category": "기타수익",
+      "memo": "보너스 수당"
+    },
+    {
+      "id": 25,
+      "user": "aaa@gmail.com",
+      "date": "2026-02-22",
+      "money": 2500000,
+      "category": "월급",
+      "memo": "2월 월급"
+    },
+
+    {
+      "id": 26,
+      "user": "test@gmail.com",
+      "date": "2026-03-05",
+      "money": 95000,
+      "category": "기타수익",
+      "memo": "중고거래 수익"
+    },
+    {
+      "id": 27,
+      "user": "test@gmail.com",
+      "date": "2026-03-16",
+      "money": 105000,
+      "category": "기타수익",
+      "memo": "프리랜서 수익"
+    },
+    {
+      "id": 28,
+      "user": "test@gmail.com",
+      "date": "2026-03-22",
+      "money": 2500000,
+      "category": "월급",
+      "memo": "3월 월급"
+    },
+
+    {
+      "id": 29,
+      "user": "aaa@gmail.com",
+      "date": "2026-03-07",
+      "money": 90000,
+      "category": "기타수익",
+      "memo": "중고거래 수익"
+    },
+    {
+      "id": 30,
+      "user": "aaa@gmail.com",
+      "date": "2026-03-19",
+      "money": 115000,
+      "category": "기타수익",
+      "memo": "프리랜서 수익"
+    },
+    {
+      "id": 31,
+      "user": "aaa@gmail.com",
+      "date": "2026-03-22",
+      "money": 2500000,
+      "category": "월급",
+      "memo": "3월 월급"
+    },
+
+    {
+      "id": 32,
+      "user": "test@gmail.com",
+      "date": "2026-04-10",
+      "money": 85000,
+      "category": "기타수익",
+      "memo": "용돈"
+    },
+    {
+      "id": 33,
+      "user": "test@gmail.com",
+      "date": "2026-04-20",
+      "money": 150000,
+      "category": "기타수익",
+      "memo": "성과금"
+    },
+    {
+      "id": 34,
+      "user": "test@gmail.com",
+      "date": "2026-04-22",
+      "money": 2500000,
+      "category": "월급",
+      "memo": "4월 월급"
+    },
+
+    {
+      "id": 35,
+      "user": "aaa@gmail.com",
+      "date": "2026-04-11",
+      "money": 75000,
+      "category": "기타수익",
+      "memo": "용돈"
+    },
+    {
+      "id": 36,
+      "user": "aaa@gmail.com",
+      "date": "2026-04-21",
+      "money": 135000,
+      "category": "기타수익",
+      "memo": "성과금"
+    },
+    {
+      "id": 37,
+      "user": "aaa@gmail.com",
+      "date": "2026-04-22",
+      "money": 2500000,
+      "category": "월급",
+      "memo": "4월 월급"
     }
   ],
 
