@@ -33,7 +33,9 @@ function normalizeLedgerEntries(items, type) {
 
 export const useBudgetStore = defineStore('budget', () => {
   const today = new Date();
-  const selectedDate = ref('');
+  const selectedDate = ref(
+    createDateKey(today.getFullYear(), today.getMonth() + 1, today.getDate()),
+  );
   const visibleMonth = ref(new Date(today.getFullYear(), today.getMonth(), 1));
   const incomeEntries = ref([]);
   const expenditureEntries = ref([]);
@@ -200,11 +202,15 @@ export const useBudgetStore = defineStore('budget', () => {
       visibleMonth.value.getMonth() + offset,
       1,
     );
-    selectedDate.value = '';
+    selectedDate.value = createDateKey(
+      visibleMonth.value.getFullYear(),
+      visibleMonth.value.getMonth() + 1,
+      1,
+    );
   }
 
   function toggleSelectedDate(dateKey) {
-    selectedDate.value = selectedDate.value === dateKey ? '' : dateKey;
+    selectedDate.value = dateKey;
   }
 
   function updateFilters(nextFilters) {

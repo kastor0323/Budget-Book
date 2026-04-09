@@ -180,6 +180,10 @@ const summaryCards = computed(() => {
     },
   ];
 });
+
+function isSelectedDate(dateKey) {
+  return props.selectedDate === dateKey;
+}
 </script>
 
 <template>
@@ -236,15 +240,17 @@ const summaryCards = computed(() => {
             class="date-cell"
             :class="{
               'date-cell-empty': cell.isEmpty,
-              'date-cell-today': cell.isToday,
               'date-cell-clickable': !cell.isEmpty,
-              'date-cell-selected': selectedDate === cell.dateKey
+              'date-cell-selected': !cell.isEmpty && isSelectedDate(cell.dateKey),
             }"
             :disabled="cell.isEmpty"
             @click="!cell.isEmpty && emit('date-select', cell.dateKey)"
           >
             <template v-if="!cell.isEmpty">
-              <span class="day-number">{{ cell.day }}</span>
+              <span class="day-number-row">
+                <span class="day-number">{{ cell.day }}</span>
+                <span v-if="cell.isToday" class="today-badge">TODAY</span>
+              </span>
               <span v-if="cell.expense" class="day-amount day-expense">
                 {{ cell.expense }}
               </span>
@@ -254,6 +260,10 @@ const summaryCards = computed(() => {
             </template>
           </button>
         </div>
+
+        <button type="button" class="create-button" aria-label="거래 추가">
+          +
+        </button>
       </template>
     </article>
 
@@ -299,7 +309,7 @@ const summaryCards = computed(() => {
 }
 
 .calendar-panel {
-  padding: 24px 20px 22px;
+  padding: 24px 20px 54px;
 }
 
 .calendar-heading {
@@ -415,9 +425,11 @@ const summaryCards = computed(() => {
   100% { transform: scale(1.05); }
 }
 
-.date-cell-today {
-  border-color: #93a1ff;
-  box-shadow: inset 0 0 0 1px #93a1ff;
+.day-number-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 4px;
 }
 
 .day-number {
@@ -426,6 +438,17 @@ const summaryCards = computed(() => {
   font-size: 16px;
   font-weight: 700;
   line-height: 1.1;
+}
+
+.today-badge {
+  padding: 3px 6px;
+  border-radius: 999px;
+  background: #eef3ff;
+  color: #5c6eff;
+  font-size: 9px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.04em;
 }
 
 .day-amount {
@@ -485,6 +508,30 @@ const summaryCards = computed(() => {
   letter-spacing: -0.04em;
 }
 
+.create-button {
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+  width: 58px;
+  height: 58px;
+  border: 0;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(255, 210, 66, 0.84) 0%, rgba(255, 178, 38, 0.84) 100%);
+  color: #ffffff;
+  font-size: 34px;
+  line-height: 1;
+  box-shadow: 0 18px 28px rgba(255, 184, 46, 0.28);
+  backdrop-filter: blur(8px);
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.create-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 22px 32px rgba(255, 184, 46, 0.34);
+}
+
 .summary-income {
   background: #f1f6ff;
 }
@@ -511,7 +558,7 @@ const summaryCards = computed(() => {
 
 @media (max-width: 420px) {
   .calendar-panel {
-    padding: 18px 14px 16px;
+    padding: 18px 14px 48px;
   }
 
   .calendar-heading {
@@ -540,6 +587,15 @@ const summaryCards = computed(() => {
     font-size: 13px;
   }
 
+  .day-number-row {
+    gap: 2px;
+  }
+
+  .today-badge {
+    padding: 2px 5px;
+    font-size: 8px;
+  }
+
   .day-amount {
     font-size: 9px;
   }
@@ -560,11 +616,19 @@ const summaryCards = computed(() => {
   .summary-card strong {
     font-size: 15px;
   }
+
+  .create-button {
+    right: 14px;
+    bottom: 14px;
+    width: 48px;
+    height: 48px;
+    font-size: 28px;
+  }
 }
 
 @media (min-width: 768px) {
   .calendar-panel {
-    padding: 28px 26px 26px;
+    padding: 28px 26px 62px;
   }
 
   .calendar-heading h1,
@@ -600,6 +664,19 @@ const summaryCards = computed(() => {
 
   .summary-card strong {
     font-size: 22px;
+  }
+
+  .create-button {
+    right: 20px;
+    bottom: 20px;
+    width: 62px;
+    height: 62px;
+    font-size: 36px;
+  }
+
+  .today-badge {
+    padding: 3px 7px;
+    font-size: 10px;
   }
 }
 </style>
