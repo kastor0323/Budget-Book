@@ -238,6 +238,7 @@ const summaryCards = computed(() => {
               'date-cell-empty': cell.isEmpty,
               'date-cell-today': cell.isToday,
               'date-cell-clickable': !cell.isEmpty,
+              'date-cell-selected': selectedDate === cell.dateKey
             }"
             :disabled="cell.isEmpty"
             @click="!cell.isEmpty && emit('date-select', cell.dateKey)"
@@ -394,6 +395,24 @@ const summaryCards = computed(() => {
   background: linear-gradient(180deg, #f8faff 0%, #f1f5ff 100%);
   border-color: #d9e1ff;
   box-shadow: 0 10px 20px rgba(99, 116, 255, 0.08);
+  transform: translateY(-2px);
+  z-index: 1;
+}
+
+.date-cell-selected {
+  border-color: #5c6eff !important;
+  background: #f4f6ff !important;
+  box-shadow: 0 0 0 2px rgba(92, 110, 255, 0.4), 0 12px 24px rgba(92, 110, 255, 0.2) !important;
+  transform: scale(1.05) !important;
+  z-index: 10;
+  position: relative;
+  animation: calendarPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes calendarPop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1.05); }
 }
 
 .date-cell-today {
