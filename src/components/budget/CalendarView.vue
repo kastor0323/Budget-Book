@@ -1,1 +1,2 @@
 // 캘린더 화면 UI 컴포넌트
+<template></template>
