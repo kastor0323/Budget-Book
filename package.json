@@ -9,8 +9,17 @@
     "preview": "vite preview"
   },
   "dependencies": {
+<<<<<<< HEAD
     "axios": "^1.14.0",
     "bootstrap": "^5.3.8",
+=======
+    "@fortawesome/fontawesome-svg-core": "^7.2.0",
+    "@fortawesome/free-regular-svg-icons": "^7.2.0",
+    "@fortawesome/free-solid-svg-icons": "^7.2.0",
+    "@fortawesome/vue-fontawesome": "^3.1.3",
+    "axios": "^1.14.0",
+    "lucide-vue-next": "^1.0.0",
+>>>>>>> 2494a2f43d470b0e1387448879102213c54fa873
     "pinia": "^3.0.4",
     "vue": "^3.5.30",
     "vue-router": "^5.0.3"

@@ -4,6 +4,11 @@
       "email": "test@gmail.com",
       "password": "test1234!",
       "nickname": "테스터"
+    },
+    {
+      "email": "aaa@gmail.com",
+      "password": "1234",
+      "nickname": "다른유저"
     }
   ],
 
@@ -20,13 +25,22 @@
 
   "expenditure": [
     {
-      "id": 2,
+      "id": 1,
       "user": "test@gmail.com",
-      "date": "2026-04-08",
-      "money": 10000,
+      "date": "2025-11-01",
+      "money": 12000,
       "category": "식비",
-      "history": "멘츠루 라멘",
-      "memo": "넘 비삼요(ㅇㅈ)"
+      "history": "김밥+라면",
+      "memo": "점심 간단히 해결"
+    },
+    {
+      "id": 2,
+      "user": "aaa@gmail.com",
+      "date": "2025-11-01",
+      "money": 999999,
+      "category": "여가비",
+      "history": "게임기",
+      "memo": "다른 유저 데이터"
     }
   ]
 }

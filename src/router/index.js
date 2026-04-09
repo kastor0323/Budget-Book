@@ -3,6 +3,7 @@ import { useAuthStore } from '@/stores/authStore';
 import LoginPage from '@/pages/LoginPage.vue';
 import RegisterPage from '@/pages/RegisterPage.vue';
 import CalendarPage from '@/pages/CalendarPage.vue';
+import AnalysisPage from '@/pages/AnalysisPage.vue';
 import LogoutPage from '@/pages/LogoutPage.vue';
 import MyPage from '@/pages/MyPage.vue';
 import AnalysisPage from '@/pages/AnalysisPage.vue';
@@ -33,6 +34,13 @@ const router = createRouter({
       path: '/ledgers',
       name: 'ledgers',
       component: CalendarPage,
+      meta: { requiresAuth: true },
+    },
+    {
+      path: '/analysis',
+      name: 'Analysis',
+      component: AnalysisPage,
+      meta: { requiresAuth: true },
     },
     {
       path: '/user/me',
@@ -49,6 +57,7 @@ const router = createRouter({
 
 router.beforeEach((to, from) => {
   const authStore = useAuthStore();
+
   if (to.meta.requiresAuth && !authStore.currentUser) {
     return '/auth/login';
   }

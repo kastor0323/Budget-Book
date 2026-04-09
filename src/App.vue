@@ -16,11 +16,22 @@ authStore.initializeAuth();
 </template>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap');
-
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+html,
+body,
+#app {
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  font-family: sans-serif;
+  background: #f9fafb;
+  color: #111827;
 }
 </style>
