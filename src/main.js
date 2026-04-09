@@ -1,4 +1,5 @@
 import './assets/main.css';
+import './styles/theme.css';
 
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';
@@ -17,6 +18,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 library.add(faUtensils, faHouse, faBus, faGamepad, faEllipsis);
+
 const app = createApp(App);
 
 app.use(createPinia());

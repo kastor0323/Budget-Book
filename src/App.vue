@@ -1,11 +1,14 @@
 <script setup>
 import { RouterView } from 'vue-router';
+import { useAuthStore } from '@/stores/authStore';
+
+// 앱 시작 시 인증 상태 초기화
+const authStore = useAuthStore();
+authStore.initializeAuth();
 </script>
 
 <template>
-  <main class="app-container">
-    <RouterView />
-  </main>
+  <RouterView />
 </template>
 
 <style>

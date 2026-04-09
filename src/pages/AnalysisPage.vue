@@ -104,6 +104,21 @@ const router = useRouter();
 const expenditures = ref([]);
 const selectedKey = ref('');
 
+const getCurrentUserEmail = () => {
+  const storedUser = localStorage.getItem('currentUser');
+  if (!storedUser) return '';
+
+  try {
+    const parsedUser = JSON.parse(storedUser);
+    return parsedUser.email || '';
+  } catch (error) {
+    console.error('currentUser 파싱 실패:', error);
+    return '';
+  }
+};
+
+const currentUserEmail = ref(getCurrentUserEmail());
+
 const categoryColorMap = {
   식비: '#FFBB00',
   '주거/생활비': '#22C55E',
@@ -116,7 +131,9 @@ const categoryOrder = ['식비', '주거/생활비', '교통비', '여가비', '
 
 const fetchExpenditureData = async () => {
   try {
-    const response = await axios.get('http://localhost:3000/expenditure');
+    const response = await axios.get(
+      `http://localhost:3000/expenditure?user=${encodeURIComponent(currentUserEmail.value)}`,
+    );
     console.log('지출 응답 데이터:', response.data);
 
     if (Array.isArray(response.data)) {
@@ -160,14 +177,23 @@ const getRecentSixMonths = () => {
   return result;
 };
 
-const monthlyData = computed(() => {
-  const recentMonths = getRecentSixMonths();
+const userExpenditures = computed(() => {
   const safeExpenditures = Array.isArray(expenditures.value)
     ? expenditures.value
     : [];
 
+  if (!currentUserEmail.value) return [];
+
+  return safeExpenditures.filter(
+    (item) => item.user === currentUserEmail.value,
+  );
+});
+
+const monthlyData = computed(() => {
+  const recentMonths = getRecentSixMonths();
+
   return recentMonths.map((monthInfo) => {
-    const total = safeExpenditures
+    const total = userExpenditures.value
       .filter((item) => {
         const parsed = parseDate(item.date);
         return parsed.key === monthInfo.key;
@@ -192,11 +218,7 @@ const selectedMonth = computed(() => selectedMonthInfo.value?.month || '');
 const selectedYear = computed(() => selectedMonthInfo.value?.year || '');
 
 const selectedMonthExpenditures = computed(() => {
-  const safeExpenditures = Array.isArray(expenditures.value)
-    ? expenditures.value
-    : [];
-
-  return safeExpenditures.filter((item) => {
+  return userExpenditures.value.filter((item) => {
     const parsed = parseDate(item.date);
     return parsed.key === selectedKey.value;
   });
@@ -247,6 +269,10 @@ const maxAmount = computed(() => {
   return max === 0 ? 100000 : max;
 });
 
+const formatToMan = (value) => {
+  return `${Math.round(value / 10000)}만`;
+};
+
 const yAxisLabels = computed(() => {
   const top = Math.ceil(maxAmount.value / 100000) * 100000;
   return [
@@ -257,10 +283,6 @@ const yAxisLabels = computed(() => {
     '0만',
   ];
 });
-
-const formatToMan = (value) => {
-  return `${Math.round(value / 10000)}만`;
-};
 
 const getDiffInfo = (index) => {
   const currentAmount = monthlyData.value[index].amount;
