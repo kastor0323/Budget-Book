@@ -127,6 +127,8 @@ watch(email, async (newEmail) => {
   }
 });
 
+const emailValid = computed(() => emailClass.value === 'text-success');
+
 // 회원가입
 const signup = async () => {
   if (!email.value || !nickname.value || !password.value) {

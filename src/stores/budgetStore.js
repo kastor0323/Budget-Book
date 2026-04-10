@@ -216,7 +216,11 @@ export const useBudgetStore = defineStore('budget', () => {
   }
 
   function toggleSelectedDate(dateKey) {
-    selectedDate.value = dateKey;
+    if (selectedDate.value === dateKey) {
+      selectedDate.value = '';
+    } else {
+      selectedDate.value = dateKey;
+    }
   }
 
   function updateFilters(nextFilters) {
