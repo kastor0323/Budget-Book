@@ -92,9 +92,8 @@ function normalizeLedgerEntries(items, type) {
 
 export const useBudgetStore1 = defineStore('store', {
   state: () => ({
-    totalCount:0,
-    totalIncome: 0,
-    totalExpenditure: 0
+    income:[],
+    expenditure:[],
   }),
 
   actions: {
@@ -104,17 +103,52 @@ export const useBudgetStore1 = defineStore('store', {
         axios.get('http://localhost:3000/expenditure')
       ])
 
-      const income = incomeRes.data
-      const expenditure = expenditureRes.data
-
-      //건수
-      this. totalCount = income.length + expenditure.length
-
-      //금액
-      this.totalIncome = incomeRes.data.reduce((sum, item) => sum + item.money, 0)
-      this.totalExpenditure = expenditureRes.data.reduce((sum, item) => sum + item.money, 0)
+      this.income = incomeRes.data
+      this.expenditure = expenditureRes.data   
     },
-  }
+  },
+  getters: {
+    // ✅ 로그인 유저 가져오기
+    currentUserEmail() {
+      const auth = useAuthStore()
+      return auth.currentUser?.email
+    },
+
+    // ✅ 내 수입만 필터
+    myIncome(state) {
+      return state.income.filter(
+        (item) => item.user === this.currentUserEmail
+      )
+    },
+
+    // ✅ 내 지출만 필터
+    myExpenditure(state) {
+      return state.expenditure.filter(
+        (item) => item.user === this.currentUserEmail
+      )
+    },
+
+    // ✅ 총 거래 건수
+    totalCount() {
+      return this.myIncome.length + this.myExpenditure.length
+    },
+
+    // ✅ 총 수입
+    totalIncome() {
+      return this.myIncome.reduce(
+        (sum, item) => sum + Number(item.money || 0),
+        0
+      )
+    },
+
+    // ✅ 총 지출
+    totalExpenditure() {
+      return this.myExpenditure.reduce(
+        (sum, item) => sum + Number(item.money || 0),
+        0
+      )
+    },
+  },
 })
 
 

@@ -147,7 +147,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, computed } from 'vue';
+import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import { useBudgetStore1 } from '@/stores/budgetStore';
 import { useAuthStore } from '@/stores/authStore';
