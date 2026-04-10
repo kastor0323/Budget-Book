@@ -301,6 +301,20 @@ export const useBudgetStore = defineStore('budget', () => {
     persistVisibleMonth();
   }
 
+  function resetSessionState() {
+    const todayDateKey = getDefaultTodayDate();
+    const { year, month } = parseDateKey(todayDateKey);
+
+    selectedDate.value = todayDateKey;
+    visibleMonth.value = new Date(year, month - 1, 1);
+    filters.value = getDefaultFilters();
+    loadError.value = '';
+    isLoading.value = false;
+
+    persistCalendarState();
+    persistFilters();
+  }
+
   function focusDate(dateKey, options = {}) {
     const { resetFilters = false } = options;
 
@@ -547,6 +561,7 @@ export const useBudgetStore = defineStore('budget', () => {
     focusDate,
     focusMonth,
     updateFilters,
+    resetSessionState,
     createDateKey,
     updateTransaction,
     deleteTransaction,
