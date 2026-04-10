@@ -10,7 +10,7 @@
         @click="goBack"
       >
         <i class="bi bi-arrow-left me-2"></i>
-        <span class="text-secondary small"><- 캘린더로 돌아가기</span>
+        <span class="text-secondary small"><i class="fa-solid fa-arrow-left"></i><bold> 캘린더로 돌아가기</bold></span>
       </div>
     </header>
     <main class="container py-4" style="max-width: 800px">
@@ -18,7 +18,11 @@
       <section
         class="profile-card p-4 text-white mb-4 d-flex align-items-center shadow-sm"
       >
-        <div class="profile-avatar bg-white me-4"></div>
+        <div class="profile-avatar bg-white me-4">
+          <img
+            :src="authStore.user?.avatar || defaultImg"
+            class="profile-avatar mb-3"
+          /></div>
         <div class="profile-info">
           <h3 class="fw-bold mb-1" v-if="authStore.currentUser">
             {{ authStore.currentUser.nickname }}
@@ -156,6 +160,8 @@ const router = useRouter();
 const authStore = useAuthStore();
 const store = useBudgetStore1();
 
+const defaultImg = 'https://image.fmkorea.com/files/attach/new3/20231118/486616/7752527/6407418052/e0680940917fba1b2350c6563c32ad0c.jpg'
+
 const nickname = ref('');
 const password = ref('');
 
@@ -214,6 +220,7 @@ const logout = () => {
   height: 80px;
   border-radius: 50%;
   flex-shrink: 0;
+  
 }
 
 /* 입력창 스타일 커스텀 */
