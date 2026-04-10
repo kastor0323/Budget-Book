@@ -54,7 +54,9 @@ export const useBudgetStore = defineStore('budget', () => {
 
   const selectedTransactions = computed(() => {
     if (selectedDate.value) {
-      return ledgerEntries.value.filter((entry) => entry.date === selectedDate.value);
+      return ledgerEntries.value.filter(
+        (entry) => entry.date === selectedDate.value,
+      );
     }
     const year = visibleMonth.value.getFullYear();
     const month = String(visibleMonth.value.getMonth() + 1).padStart(2, '0');
@@ -202,6 +204,39 @@ export const useBudgetStore = defineStore('budget', () => {
     }
   }
 
+  async function addTransaction(newData) {
+    try {
+      const authStore = useAuthStore();
+      const userEmail = authStore.currentUser?.email || '';
+
+      if (!userEmail) {
+        alert('로그인한 사용자 정보를 찾을 수 없습니다.');
+        return;
+      }
+
+      const endpoint = newData.type === 'income' ? 'income' : 'expenditure';
+
+      const serverData = {
+        id: String(Date.now()),
+        user: userEmail,
+        date: newData.date,
+        money: Number(newData.amount),
+        category: newData.category,
+        memo: newData.memo ?? '',
+      };
+
+      if (newData.type === 'expense') {
+        serverData.history = newData.history ?? '';
+      }
+
+      await axios.post(`${API_BASE_URL}/${endpoint}`, serverData);
+      await loadLedgerEntries();
+    } catch (error) {
+      console.error('가계부 추가 실패', error);
+      alert('거래 내역 추가에 실패했습니다.');
+    }
+  }
+
   function changeMonth(offset) {
     visibleMonth.value = new Date(
       visibleMonth.value.getFullYear(),
@@ -251,5 +286,6 @@ export const useBudgetStore = defineStore('budget', () => {
     createDateKey,
     updateTransaction,
     deleteTransaction,
+    addTransaction,
   };
 });
