@@ -6,6 +6,7 @@ import CalendarView from '../components/budget/CalendarView.vue';
 import TransactionDetail from '../components/budget/TransactionDetail.vue';
 import TransactionList from '../components/budget/TransactionList.vue';
 import TransactionModal from '../components/budget/TransactionModal.vue';
+import TransactionForm from '../components/budget/TransactionForm.vue';
 import { useBudgetStore } from '../stores/budgetStore';
 import AppHeader from '@/components/AppHeader.vue';
 
@@ -26,6 +27,8 @@ const {
 const isEditModalOpen = ref(false);
 const editingTransaction = ref(null);
 
+const isCreateModalOpen = ref(false);
+
 function openEditModal(transaction) {
   editingTransaction.value = transaction;
   isEditModalOpen.value = true;
@@ -34,6 +37,18 @@ function openEditModal(transaction) {
 function closeEditModal() {
   isEditModalOpen.value = false;
   editingTransaction.value = null;
+}
+
+function openCreateModal() {
+  if (!selectedDate.value) {
+    alert('캘린더에서 날짜를 먼저 선택해주세요.');
+    return;
+  }
+  isCreateModalOpen.value = true;
+}
+
+function closeCreateModal() {
+  isCreateModalOpen.value = false;
 }
 
 async function handleSaveTransaction(updatedData) {
@@ -60,18 +75,13 @@ async function handleSaveTransaction(updatedData) {
   closeEditModal();
 }
 
+async function handleCreateTransaction(formData) {
+  await budgetStore.addTransaction(formData);
+  closeCreateModal();
+}
+
 async function handleDeleteTransaction(transaction) {
-  if (
-    confirm(
-      '\uC815\uB9D0\uB85C \uC774 \uAC70\uB798 \uB0B4\uC5ED\uC744 \uC0AD\uC81C\uD558\uC2DC\uACA0\uC2B5\uB2C8\uAE4C?',
-    )
-  ) {
-    const hadSelectedDate = Boolean(selectedDate.value);
-    const currentMonth = new Date(
-      visibleMonth.value.getFullYear(),
-      visibleMonth.value.getMonth(),
-      1,
-    );
+  if (confirm('정말로 이 거래 내역을 삭제하시겠습니까?')) {
     await budgetStore.deleteTransaction(transaction.id, transaction.type);
 
     if (hadSelectedDate) {
@@ -88,7 +98,8 @@ onMounted(() => {
 </script>
 
 <template>
-  <AppHeader></AppHeader>
+  <AppHeader />
+
   <section class="calendar-page">
     <div class="page-body">
       <CalendarView
@@ -99,6 +110,7 @@ onMounted(() => {
         :load-error="loadError"
         @month-change="budgetStore.changeMonth"
         @date-select="budgetStore.toggleSelectedDate"
+        @open-create="openCreateModal"
       />
 
       <section class="transaction-section">
@@ -112,6 +124,7 @@ onMounted(() => {
           :load-error="loadError"
           @filter-change="budgetStore.updateFilters"
         />
+
         <TransactionList
           :selected-date="selectedDate"
           :transactions="selectedSummaryTransactions"
@@ -126,6 +139,14 @@ onMounted(() => {
         :transaction="editingTransaction"
         @close="closeEditModal"
         @save="handleSaveTransaction"
+      />
+
+      <TransactionForm
+        :show="isCreateModalOpen"
+        :selected-date="selectedDate"
+        :category-groups="categoryGroups"
+        @close="closeCreateModal"
+        @save="handleCreateTransaction"
       />
     </div>
   </section>

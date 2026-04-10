@@ -24,7 +24,7 @@ const props = defineProps({
   },
 });
 
-const emit = defineEmits(['month-change', 'date-select']);
+const emit = defineEmits(['month-change', 'date-select', 'open-create']);
 
 const weekdayLabels = [
   { label: '\uC77C', tone: 'sun' },
@@ -241,7 +241,8 @@ function isSelectedDate(dateKey) {
             :class="{
               'date-cell-empty': cell.isEmpty,
               'date-cell-clickable': !cell.isEmpty,
-              'date-cell-selected': !cell.isEmpty && isSelectedDate(cell.dateKey),
+              'date-cell-selected':
+                !cell.isEmpty && isSelectedDate(cell.dateKey),
             }"
             :disabled="cell.isEmpty"
             @click="!cell.isEmpty && emit('date-select', cell.dateKey)"
@@ -261,13 +262,16 @@ function isSelectedDate(dateKey) {
           </button>
         </div>
 
-        <button type="button" class="create-button" aria-label="거래 추가">
+        <button
+          type="button"
+          class="create-button"
+          aria-label="거래 추가"
+          @click="emit('open-create')"
+        >
           +
         </button>
       </template>
     </article>
-
-
   </section>
 </template>
 
@@ -392,7 +396,9 @@ function isSelectedDate(dateKey) {
 .date-cell-selected {
   border-color: #5c6eff !important;
   background: #f4f6ff !important;
-  box-shadow: 0 0 0 2px rgba(92, 110, 255, 0.4), 0 12px 24px rgba(92, 110, 255, 0.2) !important;
+  box-shadow:
+    0 0 0 2px rgba(92, 110, 255, 0.4),
+    0 12px 24px rgba(92, 110, 255, 0.2) !important;
   transform: scale(1.05) !important;
   z-index: 10;
   position: relative;
@@ -400,9 +406,15 @@ function isSelectedDate(dateKey) {
 }
 
 @keyframes calendarPop {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.1); }
-  100% { transform: scale(1.05); }
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1.05);
+  }
 }
 
 .day-number-row {
@@ -496,7 +508,11 @@ function isSelectedDate(dateKey) {
   height: 58px;
   border: 0;
   border-radius: 50%;
-  background: linear-gradient(135deg, rgba(255, 210, 66, 0.84) 0%, rgba(255, 178, 38, 0.84) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 210, 66, 0.84) 0%,
+    rgba(255, 178, 38, 0.84) 100%
+  );
   color: #ffffff;
   font-size: 34px;
   line-height: 1;
