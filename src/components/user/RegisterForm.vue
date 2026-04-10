@@ -5,7 +5,7 @@
     <div class="card signup-card shadow border-0 p-4 p-md-5">
       <!-- 뒤로가기 -->
       <div class="mb-3">
-        <span class="back-btn" @click="goLogin"> ← 로그인으로 돌아가기 </span>
+        <span class="back-btn" @click="goLogin"><i class="fa-solid fa-arrow-left"></i><strong>  로그인으로 돌아가기</strong></span>
       </div>
 
       <!-- 아이콘 -->
