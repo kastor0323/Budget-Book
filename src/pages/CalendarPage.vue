@@ -81,6 +81,13 @@ async function handleCreateTransaction(formData) {
 }
 
 async function handleDeleteTransaction(transaction) {
+  const hadSelectedDate = Boolean(selectedDate.value);
+  const currentMonth = new Date(
+    visibleMonth.value.getFullYear(),
+    visibleMonth.value.getMonth(),
+    1,
+  );
+
   if (confirm('정말로 이 거래 내역을 삭제하시겠습니까?')) {
     await budgetStore.deleteTransaction(transaction.id, transaction.type);
 
@@ -102,29 +109,35 @@ onMounted(() => {
 
   <section class="calendar-page">
     <div class="page-body">
-      <CalendarView
-        :ledger-entries="ledgerEntries"
-        :visible-month="visibleMonth"
-        :selected-date="selectedDate"
-        :is-loading="isLoading"
-        :load-error="loadError"
-        @month-change="budgetStore.changeMonth"
-        @date-select="budgetStore.toggleSelectedDate"
-        @open-create="openCreateModal"
-      />
+      <section class="top-layout">
+        <div class="calendar-column">
+          <CalendarView
+            :ledger-entries="ledgerEntries"
+            :visible-month="visibleMonth"
+            :selected-date="selectedDate"
+            :is-loading="isLoading"
+            :load-error="loadError"
+            @month-change="budgetStore.changeMonth"
+            @date-select="budgetStore.toggleSelectedDate"
+            @open-create="openCreateModal"
+          />
+        </div>
 
-      <section class="transaction-section">
-        <TransactionDetail
-          :selected-date="selectedDate"
-          :visible-month="visibleMonth"
-          :transactions="summarySourceTransactions"
-          :filters="filters"
-          :category-options="categoryOptions"
-          :category-groups="categoryGroups"
-          :load-error="loadError"
-          @filter-change="budgetStore.updateFilters"
-        />
+        <div class="summary-column">
+          <TransactionDetail
+            :selected-date="selectedDate"
+            :visible-month="visibleMonth"
+            :transactions="summarySourceTransactions"
+            :filters="filters"
+            :category-options="categoryOptions"
+            :category-groups="categoryGroups"
+            :load-error="loadError"
+            @filter-change="budgetStore.updateFilters"
+          />
+        </div>
+      </section>
 
+      <section class="list-section">
         <TransactionList
           :selected-date="selectedDate"
           :transactions="selectedSummaryTransactions"
@@ -155,27 +168,55 @@ onMounted(() => {
 <style scoped>
 .calendar-page {
   min-height: 100vh;
-  padding: 32px 0 40px;
+  padding: 32px 16px 40px;
 }
 
 .page-body {
   width: 100%;
-  max-width: 980px;
+  max-width: 1400px;
   min-width: 360px;
   margin: 0 auto;
 }
 
-.transaction-section {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  margin-top: 20px;
+.top-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(320px, 0.9fr);
+  gap: 24px;
+  align-items: start;
 }
 
-@media (min-width: 768px) {
-  .transaction-section {
-    gap: 20px;
-    margin-top: 24px;
+.calendar-column,
+.summary-column {
+  min-width: 0;
+}
+
+.list-section {
+  width: 100%;
+  max-width: 980px;
+  margin: 24px auto 0;
+}
+
+@media (max-width: 1024px) {
+  .top-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .list-section {
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .calendar-page {
+    padding: 24px 12px 32px;
+  }
+
+  .top-layout {
+    gap: 18px;
+  }
+
+  .list-section {
+    margin-top: 18px;
   }
 }
 </style>
