@@ -4,6 +4,7 @@ import { defineStore } from 'pinia';
 import { useAuthStore } from './authStore';
 
 const API_BASE_URL = 'http://localhost:3000';
+const SELECTED_DATE_STORAGE_KEY = 'budget:selected-date';
 const CATEGORY_OPTIONS = {
   income: ['\uC6D4\uAE09', '\uC6A9\uB3C8', '\uAE30\uD0C0 \uC218\uC775'],
   expense: [
@@ -31,12 +32,33 @@ function normalizeLedgerEntries(items, type) {
   }));
 }
 
+function parseDateKey(dateKey) {
+  const [year, month, day] = dateKey.split('-').map(Number);
+  return { year, month, day };
+}
+
+function getInitialSelectedDate() {
+  const today = new Date();
+  const fallbackDate = createDateKey(
+    today.getFullYear(),
+    today.getMonth() + 1,
+    today.getDate(),
+  );
+
+  if (typeof window === 'undefined') {
+    return fallbackDate;
+  }
+
+  return window.sessionStorage.getItem(SELECTED_DATE_STORAGE_KEY) || fallbackDate;
+}
+
 export const useBudgetStore = defineStore('budget', () => {
   const today = new Date();
-  const selectedDate = ref(
-    createDateKey(today.getFullYear(), today.getMonth() + 1, today.getDate()),
+  const selectedDate = ref(getInitialSelectedDate());
+  const initialSelectedDateParts = parseDateKey(selectedDate.value);
+  const visibleMonth = ref(
+    new Date(initialSelectedDateParts.year, initialSelectedDateParts.month - 1, 1),
   );
-  const visibleMonth = ref(new Date(today.getFullYear(), today.getMonth(), 1));
   const incomeEntries = ref([]);
   const expenditureEntries = ref([]);
   const isLoading = ref(false);
@@ -119,7 +141,10 @@ export const useBudgetStore = defineStore('budget', () => {
     return filteredTransactions.value;
   });
 
-  async function loadLedgerEntries() {
+  async function loadLedgerEntries(options = {}) {
+    const { preserveSelectedDate = true } = options;
+    const currentSelectedDate = selectedDate.value;
+
     isLoading.value = true;
     loadError.value = '';
 
@@ -146,6 +171,10 @@ export const useBudgetStore = defineStore('budget', () => {
       incomeEntries.value = [];
       expenditureEntries.value = [];
     } finally {
+      if (preserveSelectedDate && currentSelectedDate) {
+        selectedDate.value = currentSelectedDate;
+      }
+
       isLoading.value = false;
     }
   }
@@ -163,7 +192,8 @@ export const useBudgetStore = defineStore('budget', () => {
       };
 
       await axios.patch(`${API_BASE_URL}/${endpoint}/${id}`, serverData);
-      await loadLedgerEntries();
+      await loadLedgerEntries({ preserveSelectedDate: false });
+      focusDate(updatedData.date);
     } catch (error) {
       console.error('\uAC00\uACC4\uBD80 \uC218\uC815 \uC2E4\uD328', error);
       alert('\uC218\uC815\uC5D0 \uC2E4\uD328\uD588\uC2B5\uB2C8\uB2E4.');
@@ -185,7 +215,8 @@ export const useBudgetStore = defineStore('budget', () => {
         response.status,
       );
 
-      await loadLedgerEntries();
+      await loadLedgerEntries({ preserveSelectedDate: false });
+      persistSelectedDate();
       console.log(`[deleteTransaction] Reload complete.`);
     } catch (error) {
       console.error('\uAC00\uACC4\uBD80 \uC0AD\uC81C \uC2E4\uD328', error);
@@ -194,6 +225,13 @@ export const useBudgetStore = defineStore('budget', () => {
           (error.message || ''),
       );
     }
+  }
+
+  function focusDate(dateKey) {
+    const { year, month } = parseDateKey(dateKey);
+    visibleMonth.value = new Date(year, month - 1, 1);
+    selectedDate.value = dateKey;
+    persistSelectedDate();
   }
 
   function changeMonth(offset) {
@@ -207,10 +245,20 @@ export const useBudgetStore = defineStore('budget', () => {
       visibleMonth.value.getMonth() + 1,
       1,
     );
+    persistSelectedDate();
   }
 
   function toggleSelectedDate(dateKey) {
     selectedDate.value = dateKey;
+    persistSelectedDate();
+  }
+
+  function persistSelectedDate() {
+    if (typeof window === 'undefined' || !selectedDate.value) {
+      return;
+    }
+
+    window.sessionStorage.setItem(SELECTED_DATE_STORAGE_KEY, selectedDate.value);
   }
 
   function updateFilters(nextFilters) {
@@ -237,6 +285,7 @@ export const useBudgetStore = defineStore('budget', () => {
     loadLedgerEntries,
     changeMonth,
     toggleSelectedDate,
+    focusDate,
     updateFilters,
     createDateKey,
     updateTransaction,
